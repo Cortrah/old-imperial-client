@@ -1,17 +1,16 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <game-map></game-map>
     </div>
 </template>
 
 <script>
-    import HelloWorld from '@/components/HelloWorld.vue'
+    import GameMap from '../components/GameMap.vue'
 
     export default {
         name: 'home',
         components: {
-            HelloWorld
+            GameMap
         }
     }
 </script>

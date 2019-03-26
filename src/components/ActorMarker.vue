@@ -1,5 +1,5 @@
 <template>
-    <div id="thing1" class="dragable" v-bind:style="styleObject"
+    <div id="thing1" class="dragable" v-bind:style="position"
          @mousedown="onMouseDown($event)"
          @mousemove="onMouseMove($event)"
          @mouseup="onMouseUp($event)">
@@ -12,14 +12,15 @@
         name: "ActorMarker",
         data: function() {
             return {
-                x: 80,
-                y: 80,
-                styleObject: {
-
-                    color: 'red',
-                    fontSize: '13px',
-                    left: this.x + "px",
-                    top: this.y + "px",
+                x: 50,
+                y: 50,
+            }
+        },
+        computed: {
+            position: function() {
+                return {
+                    left: this.x + 'px',
+                    top: this.y + 'px'
                 }
             }
         },
@@ -28,6 +29,7 @@
                 //console.log('down');
                 //console.log(e);
                 //console.log(e.target);
+                this.x = 90;
             },
             onMouseMove(e) {
                 //console.log('move');
@@ -55,6 +57,5 @@
         position: absolute;
         padding: 2px;
         background-color: #e4edd4;
-        left: 40px;
     }
 </style>

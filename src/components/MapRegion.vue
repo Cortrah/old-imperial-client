@@ -1,8 +1,8 @@
 <template>
-    <div class="MapRegion">
+    <div class="map-region">
         MapRegion
-        <location></location>
-        <ActorMarker></ActorMarker>
+        <location x="20" y="20"></location>
+        <ActorMarker x="60" y="60"></ActorMarker>
     </div>
 </template>
 
@@ -19,7 +19,7 @@
 </script>
 
 <style>
-    .MapRegion {
+    .map-region {
         position: absolute;
         height: 100px;
         width: 100px;

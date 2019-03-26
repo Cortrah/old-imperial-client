@@ -1,5 +1,5 @@
 <template>
-    <div class="droppable" v-bind:style="styleObject"
+    <div class="droppable" v-bind:style="position"
          @mousedown="onMouseDown($event)"
          @mousemove="onMouseMove($event)"
          @mouseup="onMouseUp($event)">
@@ -12,13 +12,15 @@
         name: "Location",
         data: function() {
             return {
-                x: 0,
-                y: 0,
-                styleObject: {
-                    color: 'blue',
-                    fontSize: '13px',
-                    left: this.x + "px",
-                    top: this.y + "px",
+                x: 20,
+                y: 30,
+            }
+        },
+        computed: {
+            position: function() {
+                return {
+                    left: this.x + 'px',
+                    top: this.y + 'px'
                 }
             }
         },

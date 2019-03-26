@@ -1,5 +1,5 @@
 <template>
-    <div class="ground">
+    <div class="game-map">
         <map-region></map-region>
     </div>
 </template>
@@ -14,10 +14,10 @@
 </script>
 
 <style>
-    .ground {
+    .game-map {
         position: absolute;
-        height: 180px;
-        width: 300px;
+        height: 160px;
+        width: 200px;
         background-color: #F8F8F8
     }
 </style>

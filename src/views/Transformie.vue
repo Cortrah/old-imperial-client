@@ -148,8 +148,8 @@
     }
 
     .workspace {
-        width: 800px;
-        height: 800px;
+        width: 400px;
+        height: 400px;
         margin: 25px auto;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(0, 0, 0, 0.1);

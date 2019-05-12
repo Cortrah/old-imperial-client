@@ -3,7 +3,7 @@
 
         <div class="container">
             <header>
-                <h1>Old Imperial Client</h1>
+                <h1 style="color:whitesmoke">Old Imperial Client</h1>
                 <div id="nav">
                     <router-link to="/">Home</router-link>
                     |
@@ -25,7 +25,7 @@
             </aside>
 
             <footer>
-                <p>Popup Windows</p>
+                <p style="color:whitesmoke">Popup Windows</p>
             </footer>
         </div>
 

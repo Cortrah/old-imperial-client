@@ -11,18 +11,17 @@
                 </div>
             </header>
 
-            <nav>
+            <left>
                 <h3>Narrative</h3>
-            </nav>
+            </left>
 
             <main>
-                <h3>Map</h3>
                 <router-view/>
             </main>
 
-            <aside>
+            <right>
                 <h3> Leader Actions</h3>
-            </aside>
+            </right>
 
             <footer>
                 <p style="color:whitesmoke">Popup Windows</p>
@@ -33,82 +32,80 @@
 </template>
 <style>
 
-    html {
+    html, body {
         height: 100%;
-    }
-
-    @supports(display: grid) {
-        .notice {
-            display: none;
-        }
+        margin: 0;
     }
 
     .container {
         display: grid;
         grid-template-areas:
                 "header header header"
-                "nav content side"
+                "left content right"
                 "footer footer footer";
         height: 100vh;
-        grid-template-columns: 200px 1fr 200px;
+        grid-template-columns: 320px 1fr 320px;
         grid-template-rows: auto 1fr auto;
         grid-gap: 10px;
+        overflow: hidden;
     }
 
     header {
-        background: #000000;
-        grid-area: header;
-        padding: 1rem 0;
-
-        padding: 0 1rem;
         display: flex;
+        grid-area: header;
         justify-content: space-between;
         align-items: center;
+        background: #000000;
     }
 
-    nav, aside {
-        background: #F5F5F5;
-    }
-
-    nav, aside, main {
+    left {
         display: flex;
+        grid-area: left;
         align-items: center;
         justify-content: center;
-    }
-
-    nav {
-        grid-area: nav;
         margin-left: 0.5rem;
+        background-color: antiquewhite;
+        flex: 0 0 auto;
     }
 
     main {
+        display: flex;
         grid-area: content;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        background: #e5e5e5
+        background: #e5e5e5;
+        overflow: scroll;
+        flex: 0 0 auto;
     }
 
-    aside {
-        grid-area: side;
+    right {
+        display: flex;
+        grid-area: right;
+        align-items: center;
+        justify-content: center;
         margin-right: 0.5rem;
+        background-color: beige;
+        flex: 0 0 auto;
     }
 
     footer {
-        background: #000000;
         grid-area: footer;
+        background: #000000;
     }
 
     @media (max-width: 768px) {
         .container {
             grid-template-areas:
                     "header"
-                    "nav"
+                    "left"
                     "content"
-                    "side"
+                    "right"
                     "footer";
             grid-template-columns: 1fr;
             grid-template-rows: auto minmax(75px, auto) 1fr minmax(75px, auto) auto;
         }
-        nav, aside {
+        left, right {
             margin: 0;
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>{{ msg }}</h1>
-        <div id="graphie" style="height: 100px; width: 600px; background-color: #ffffff"></div>
+        <div id="graphie" style="height: 800px; width: 800px; background-color: #f2f2f2"></div>
     </div>
 </template>
 
@@ -19,8 +19,8 @@
             var paper = new joint.dia.Paper({
                 el: document.getElementById('graphie'),
                 model: graph,
-                width: 600,
-                height: 100,
+                width: '800px',
+                height: '800px',
                 gridSize: 1
             });
 

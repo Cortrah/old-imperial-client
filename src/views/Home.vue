@@ -1,8 +1,10 @@
 <template>
     <div class="home">
-        <game-map></game-map>
-        <transformie></transformie>
+<!--        <transformie></transformie>-->
+<!--        <game-map></game-map>-->
+
         <joint-map></joint-map>
+
     </div>
 </template>
 

@@ -69,14 +69,9 @@
     }
 
     main {
-        display: flex;
-        grid-area: content;
-        align-items: center;
-        justify-content: center;
         width: 100%;
         background: #e5e5e5;
         overflow: scroll;
-        flex: 0 0 auto;
     }
 
     right {

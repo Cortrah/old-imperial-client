@@ -1,0 +1,22 @@
+Start with Kitchen Sink
+Add Chess and make it huge
+Remove what you don't need
+autogenerate adjacent graphs for grid
+add the clone feature to create non rectangular maps with the ches board squares
+when you click on a chess square zoom into the hex
+when you click on a chess square you bring up the squares attributes for editing
+add the attributes for regions to the squares editable things
+Identify the function the square uses to determine graph points to move to
+
+
+use the zoom to fit to go back to the chess board
+
+Create a  set of local json objects for client side demo (use vue store?)
+
+autogenerate adjacent graphs for hex maps
+
+another path
+start with golden layout vue app
+add a basic joint example
+add a paper with scrolling
+see if I can constrain it to to the center

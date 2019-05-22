@@ -5,6 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 import VueDraggable from 'vue-draggable'
 
+
 Vue.config.productionTip = false;
 
 Vue.use(VueDraggable)
@@ -14,3 +15,4 @@ new Vue({
     store,
     render: h => h(App)
 }).$mount('#app');
+

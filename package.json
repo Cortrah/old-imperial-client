@@ -9,6 +9,10 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "backbone": "^1.4.0",
+    "jointjs": "^2.2.1",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.6",
     "vue-draggable": "^2.0.2",
@@ -20,7 +24,7 @@
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-e2e-cypress": "^3.5.0",
     "@vue/cli-plugin-pwa": "^3.5.0",
-    "@vue/cli-plugin-unit-jest": "^3.5.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.1",
     "@vue/cli-service": "^3.5.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",

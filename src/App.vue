@@ -20,7 +20,7 @@
             </main>
 
             <right>
-                <h3> Leader Actions</h3>
+                <leader-actions></leader-actions>
             </right>
 
             <footer>
@@ -30,6 +30,18 @@
 
     </div>
 </template>
+
+<script>
+    import LeaderActions from "./components/LeaderActions";
+
+    export default {
+        name: "App",
+        components: {
+            LeaderActions
+        },
+    }
+</script>
+
 <style>
 
     html, body {

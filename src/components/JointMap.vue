@@ -1,8 +1,5 @@
 <template>
-    <div>
-        <h1>{{ msg }}</h1>
-        <div id="graphie" style="height: 800px; width: 800px; background-color: #f2f2f2"></div>
-    </div>
+    <div id="graphie"></div>
 </template>
 
 <script>
@@ -19,9 +16,13 @@
             var paper = new joint.dia.Paper({
                 el: document.getElementById('graphie'),
                 model: graph,
-                width: '800px',
-                height: '800px',
-                gridSize: 1
+                width: 4800,
+                height: 2200,
+                background: {
+                    color: 'rgb(157,178,194)'
+                },
+                gridSize: 10,
+                drawGrid: true,
             });
 
             var rect = new joint.shapes.standard.Rectangle();
@@ -47,6 +48,18 @@
             link.source(rect);
             link.target(rect2);
             link.addTo(graph);
+
+            paper.on('blank:mousewheel', _.partial(this.onMousewheel, null), this);
+            paper.on('cell:mousewheel', this.onMousewheel, this);
+
+            var paperScroller = this.paperScroller = new joint.ui.PaperScroller({
+                paper: paper,
+                autoResizePaper: true,
+                cursor: 'grab'
+            });
+
+            this.$('.paper-container').append(paperScroller.el);
+            paperScroller.render().center();
         },
         methods: {
             gogo() {
@@ -55,6 +68,3 @@
     }
 
 </script>
-
-<style scoped lang="scss">
-</style>

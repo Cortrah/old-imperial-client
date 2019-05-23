@@ -81,14 +81,13 @@
     }
 
     main {
-        display: flex;
-        grid-area: content;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        background: #e5e5e5;
+        position: absolute;
+        top: 90px;
+        left: 320px;
+        right: 320px;
+        height: 50%;
         overflow: scroll;
-        flex: 0 0 auto;
+        box-sizing: border-box;
     }
 
     right {

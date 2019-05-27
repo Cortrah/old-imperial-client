@@ -49,6 +49,51 @@
             link.target(rect2);
             link.addTo(graph);
 
+            var svgFile = [
+                '<?xml version="1.0" standalone="no"?>',
+                '<svg viewBox="0 0 1024 768" ' +
+                'version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" xml:space="preserve" >',
+                '<defs >',
+                '<clipPath id="clipId0" >',
+                '<path d="M0,768 1024,768 1024,0 0,0 z" />',
+                '</clipPath>',
+                '</defs>',
+                '<g stroke-width="0.1" clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" />',
+                '<g stroke-width="0.25" clip-path="url(#clipId0)" fill="rgb(0,0,0)" stroke="none" >',
+                '<path d="M1013.96,634.98 10.0392,634.98 1013.96,133.02 z" />',
+                '</g>',
+                '<g stroke-width="0.25" clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" >',
+                '<polyline points="10.0392,133.02 1013.96,133.02 1013.96,634.98 10.0392,634.98 10.0392,133.02 " />',
+                '<polyline points="10.0392,634.98 1013.96,133.02 " />',
+                '</g>',
+                '</svg>'
+            ].join('');
+
+
+            var el1 = new joint.shapes.basic.Image({
+                size: {
+                    width: 100,
+                    height: 100
+                },
+                position: {
+                    x: 100,
+                    y: 100
+                },
+                attrs: {
+                    image: {
+                        width: 1024,
+                        height: 768,
+                        'xlink:href': 'data:image/svg+xml;utf8,' + encodeURIComponent(svgFile),
+                        preserveAspectRatio: 'none'
+                    }
+                }
+            });
+
+            var el2 = el1.clone().position(300,300).resize(200,200);
+
+            graph.addCells([el1, el2]);
+
+
             paper.on('blank:mousewheel', _.partial(this.onMousewheel, null), this);
             paper.on('cell:mousewheel', this.onMousewheel, this);
 

@@ -3,7 +3,9 @@
 
         <div class="container">
             <header>
-                <h1 style="color:whitesmoke">Old Imperial Client</h1>
+                <h1 style="color:whitesmoke">
+                    Old Imperial Client
+                </h1>
                 <div id="nav">
                     <router-link to="/">Home</router-link>
                     |
@@ -12,7 +14,9 @@
             </header>
 
             <left>
-                <h3>Narrative</h3>
+                <h3>
+                    Narrative
+                </h3>
             </left>
 
             <main>
@@ -24,7 +28,9 @@
             </right>
 
             <footer>
-                <p style="color:whitesmoke">Popup Windows</p>
+                <p style="color:whitesmoke">
+                    Popup Windows
+                </p>
             </footer>
         </div>
 

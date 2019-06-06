@@ -16,7 +16,7 @@
             <left>
                 <h3>
                     Narrative
-                a7</h3>
+                </h3>
             </left>
 
             <main>

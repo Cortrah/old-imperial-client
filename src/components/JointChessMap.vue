@@ -17,7 +17,6 @@
         mounted: function() {
 
             var constraint = g.ellipse(g.point(200, 150), 100, 80);
-
             var ConstraintElementView = joint.dia.ElementView.extend({
 
                 pointerdown: function(evt, x, y) {
@@ -36,11 +35,10 @@
             });
 
             var graph = new joint.dia.Graph;
-
             var paper = new joint.dia.Paper({
                 el: document.getElementById('graphie'),
                 width: 4800,
-                height: 2200,
+                height: 2400,
                 background: {
                     color: 'rgb(157,178,194)'
                 },
@@ -49,15 +47,6 @@
                 model: graph,
                 elementView: ConstraintElementView
             });
-
-            // var paper = new joint.dia.Paper({
-            //     el: $('#paper-constraint-move-to-circle'),
-            //     width: 4500,
-            //     height: 3000,
-            //     gridSize: 1,
-            //     model: graph,
-            //     elementView: ConstraintElementView
-            // });
 
             var orbit = V('<ellipse/>');
             orbit.attr({
@@ -77,6 +66,52 @@
             });
             graph.addCell(earth);
 
+            var r1 = new joint.shapes.basic.Rect({
+                position: { x: 20, y: 20 },
+                size: { width: 200, height: 200 },
+                attrs: { rect: { fill: '#E74C3C' }, text: { text: 'El A' } }
+            });
+            var r2 = new joint.shapes.basic.Rect({
+                position: { x: 270, y: 30 },
+                size: { width: 100, height: 80 },
+                attrs: { rect: { fill: '#F1C40F' }, text: { text: 'El B' } }
+            });
+
+            graph.addCells([r1, r2]);
+
+            // First, unembed the cell that has just been grabbed by the user.
+            paper.on('cell:pointerdown', function(cellView, evt, x, y) {
+
+                var cell = cellView.model;
+
+                if (!cell.get('embeds') || cell.get('embeds').length === 0) {
+                    // Show the dragged element above all the other cells (except when the
+                    // element is a parent).
+                    cell.toFront();
+                }
+
+                if (cell.get('parent')) {
+                    graph.getCell(cell.get('parent')).unembed(cell);
+                }
+            });
+
+            // When the dragged cell is dropped over another cell, let it become a child of the
+            // element below.
+            paper.on('cell:pointerup', function(cellView, evt, x, y) {
+
+                var cell = cellView.model;
+                var cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
+
+                if (cellViewsBelow.length) {
+                    // Note that the findViewsFromPoint() returns the view for the `cell` itself.
+                    var cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
+
+                    // Prevent recursive embedding.
+                    if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
+                        cellViewBelow.model.embed(cell);
+                    }
+                }
+            });
 
            //
            //  var graph = new joint.dia.Graph;
@@ -145,20 +180,6 @@
            //  }).position(100,100);
            //
            //  graph.addCells([el1, el3]);
-           //
-           //  var earth = new joint.shapes.basic.Circle({
-           //      position: constraint.intersectionWithLineFromCenterToPoint(g.point(100, 100)).offset(-10, -10),
-           //      size: { width: 20, height: 20 },
-           //      attrs: { text: { text: 'earth' }, circle: { fill: '#2ECC71' } },
-           //      name: 'earth'
-           //  });
-           //  graph.addCell(earth);
-           //
-           //  var orbit = V('<ellipse/>');
-           //  orbit.attr({
-           //      cx: constraint.x, cy: constraint.y, rx: constraint.a, ry: constraint.b
-           //  });
-           //  V(paper.viewport).append(orbit);
 
             // paper.on('blank:mousewheel', _.partial(this.onMousewheel, null), this);
             // paper.on('cell:mousewheel', this.onMousewheel, this);

@@ -29,10 +29,17 @@
                 model: graph,
             });
 
-            var region1 = new joint.shapes.basic.Rect({
+            var region1 = new joint.shapes.standard.Path({
                 position: { x: 20, y: 20 },
                 size: { width: 200, height: 200 },
-                attrs: { rect: { fill: '#cccccc' }, text: { text: 'Region 1' } }
+                attrs: {
+                    body: {
+                        refD: 'M 0 5 10 0 C 20 0 20 20 10 20 L 0 15 Z'
+                    },
+                    label: {
+                        text: 'Region 1'
+                    }
+                }
             });
             var region2 = new joint.shapes.basic.Rect({
                 position: { x: 220, y: 220 },

@@ -19,7 +19,8 @@ export default new Vuex.Store({
                 "mountain": "url('images/tiles/sandysoil.png')",
                 "water": "url('images/tiles/water.png')"
             }
-        }
+        },
+
     },
     mutations: {},
     actions: {}

@@ -12,11 +12,9 @@
     export default {
         name: 'JointMap',
         props: {
-            msg: String
+            msg: String,
         },
         mounted: function() {
-
-
 
             let graph = new joint.dia.Graph;
             let paper = new joint.dia.Paper({
@@ -30,11 +28,6 @@
                 drawGrid: true,
                 model: graph,
             });
-            // new joint.ui.Tooltip({
-            //     target: '[data-tooltip]',
-            //     direction: 'auto',
-            //     padding: 10
-            // });
 
             let region1 = new joint.shapes.standard.Path({
                 position: { x: 676, y: 249 },
@@ -42,6 +35,7 @@
                 attrs: {
                     pathId: '_x33_0',
                     regionId: 247,
+                    cellType: "Region",
                     pathFill: '#737144',
                     tooltip: "Place of the innumerable Ghoulfarb Fullsuit",
                     body: {
@@ -71,11 +65,13 @@
                     width: 20, height: 20
                 },
                 attrs: {
+                    cellType: "Location",
                     body: {
                         refD: `M10 10 H 90 V 90 H 10 L 10 10`
                     },
                     label: {
-                        text: 'Ahnupat'
+                        text: 'Ahnupat',
+                        fill: 'blue'
                     }
                 }
             });
@@ -88,6 +84,7 @@
                     width: 20, height: 20
                 },
                 attrs: {
+                    cellType: "Location",
                     body: {
                         refD: `M10 10 H 90 V 90 H 10 L 10 10`
                     },
@@ -105,6 +102,7 @@
                     width: 20, height: 20
                 },
                 attrs: {
+                    cellType: "Location",
                     body: {
                         refD: `M10 10 H 90 V 90 H 10 L 10 10`
                     },
@@ -114,13 +112,13 @@
                 }
             });
 
-
             let region2 = new joint.shapes.standard.Path({
                 position: { x: 640, y: 324 },
                 size: { width: 103, height: 112 },
                 attrs: {
                     pathId: '_x35_0',
                     regionId: 873,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `M704.771,348.067c0.823,0.84,2.937,0.399,4.502,0.502c2.563,2.646,7.281,4.498,9.004,8.519
@@ -144,6 +142,7 @@
                 attrs: {
                     pathId: '_x36_8',
                     regionId: 874,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `M686.266,440.232c-12.037,4.812-28.21,5.479-29.51,21.034
@@ -164,13 +163,13 @@
                 }
             });
 
-
             let region4 = new joint.shapes.standard.Path({
                 position: { x: 501, y: 415 },
                 size: { width: 89, height: 105 },
                 attrs: {
                     pathId: '_x37_7',
                     regionId: 150,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `M553.221,515.868c-1.415,1.923-3.566,3.101-6.001,4.007c0.464-3.642-2.812-3.528-3.003-6.517
@@ -196,6 +195,7 @@
                 attrs: {
                     pathId: '_x39_0',
                     regionId: 637,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `M609.74,466.278c2.089,0.428,2.355-0.977,4.002-1.001c1.145,0.521,1.39,1.945,2.5,2.504
@@ -225,6 +225,7 @@
                 attrs: {
                     pathId: '_x31_05',
                     regionId: 582,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `M762.291,527.889c-3.375,2.133-7.613,3.396-9.502,7.015c-0.106,2.397,0.497,5.513-1,6.518
@@ -246,6 +247,7 @@
                 attrs: {
                     pathId: '_x31_37',
                     regionId: 135,
+                    cellType: "Region",
                     pathFill: '#737144',
                     body: {
                         refD: `
@@ -264,6 +266,7 @@
                 attrs: {
                     pathId: '_x38_',
                     regionId: 1014,
+                    cellType: "Region",
                     pathFill: '#7895A4',
                     body: {
                         refD: `M903.339,139.192c0,89.996,0,179.988,0,269.985c-53.685,0-107.37,0-161.054,0
@@ -298,13 +301,13 @@
                 }
             });
 
-
             let region9 = new joint.shapes.standard.Path({
                 position: { x: 599, y: 415 },
                 size: { width: 531, height: 335 },
                 attrs: {
                     pathId: '_x37_9',
                     regionId: 1013,
+                    cellType: "Region",
                     pathFill: '#7895A4',
                     body: {
                         refD: `M1045.387,584.993c-0.97-6.23-6.863-4.458-10.004-8.521
@@ -366,13 +369,13 @@
                 }
             });
 
-
             let region10 = new joint.shapes.standard.Path({
                 position: { x: 453, y: 458 },
                 size: { width: 88, height: 97 },
                 attrs: {
                     pathId: '_x33_0',
                     regionId: 101,
+                    cellType: "Region",
                     pathFill: '#C06338',
                     body: {
                         refD: `M510.207,464.272c1.332,4.016-0.844,11.529,2,14.023c4.373,0.375,9.777-0.219,14.005,1.502
@@ -397,6 +400,7 @@
                 attrs: {
                     pathId: '_x31_053',
                     regionId: 346,
+                    cellType: "Region",
                     pathFill: '#C9AC68',
                     body: {
                         refD: `M578.729,535.906c-3.613,6.889-1.819,11.922,7.011,12.021
@@ -416,7 +420,6 @@
                 }
             });
 
-
             let leader1 = new joint.shapes.standard.Path({
                 position: {
                     x: 520,
@@ -426,6 +429,7 @@
                     width: 20, height: 20
                 },
                 attrs: {
+                    cellType: "Leader",
                     body: {
                         refD: `M10 10 H 90 V 90 H 10 L 10 10`
                     },
@@ -438,7 +442,7 @@
             graph.addCells([
                 region1, region2, region3, region4, region5,
                 region6, region7, region8, region9, region10,
-                region11, leader1
+                region11
             ]);
 
             graph.addCells([
@@ -449,31 +453,42 @@
                 leader1
             ]);
 
+            let image = new joint.shapes.standard.Image();
+            image.resize(20, 20);
+            image.position(50, 50);
+            image.attr('root/title', 'joint.shapes.standard.Image');
+            image.attr('tooltip', 'Port Smith');
+            image.attr('image/xlinkHref', './img/glyphs/port.png');
+            image.addTo(graph);
+
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {
 
-                var cell = cellView.model;
+                if (cellView.model.attributes.attrs.cellType === "Leader") {
+                    let cell = cellView.model;
 
-                if (!cell.get('embeds') || cell.get('embeds').length === 0) {
-                    // Show the dragged element above all the other cells (except when the
-                    // element is a parent).
-                    cell.toFront();
-                }
+                    if (!cell.get('embeds') || cell.get('embeds').length === 0) {
+                        // Show the dragged element above all the other cells (except when the element is a parent).
+                        cell.toFront();
+                    }
 
-                if (cell.get('parent')) {
-                    graph.getCell(cell.get('parent')).unembed(cell);
+                    if (cell.get('parent')) {
+                        graph.getCell(cell.get('parent')).unembed(cell);
+                    }
+                } else {
+                    evt.data.guarded = true;
                 }
             });
 
             // When the dragged cell is dropped over another cell, let it become a child of the element below.
             paper.on('cell:pointerup', function(cellView, evt, x, y) {
 
-                var cell = cellView.model;
-                var cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
+                let cell = cellView.model;
+                let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
 
                 if (cellViewsBelow.length) {
                     // Note that the findViewsFromPoint() returns the view for the `cell` itself.
-                    var cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
+                    let cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
 
                     // Prevent recursive embedding.
                     if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
@@ -483,27 +498,15 @@
             });
 
             paper.on('cell:mouseover', function(cellView, evt, x, y) {
-
-                console.log(cellView.model.attributes.attrs.tooltip);
-                // var cell = cellView.model;
-                // var cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
-                //
-                // if (cellViewsBelow.length) {
-                //     // Note that the findViewsFromPoint() returns the view for the `cell` itself.
-                //     var cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
-                //
-                //     // Prevent recursive embedding.
-                //     if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
-                //         cellViewBelow.model.embed(cell);
-                //     }
-                // }
+                if (cellView.model.attributes.attrs.cellType === "Region") {
+                    console.log(cellView.model.attributes.attrs.tooltip);
+                }
             });
-
         },
         methods: {
             rightClick: function(e) {
                 console.log(e);
-                alert("x:" + e.offsetX + " , y:" + e.offsetY)
+                console.log("x:" + e.offsetX + " , y:" + e.offsetY)
             }
         }
     }

@@ -21,6 +21,7 @@
 
             <main>
                 <router-view/>
+                <img src="./assets/logo.png">
             </main>
 
             <right>

@@ -56,8 +56,8 @@
 
             let location1 = new joint.shapes.standard.Path({
                 position: {
-                    x: 676,
-                    y: 260
+                    x: 740,
+                    y: 324
                 },
                 size: {
                     width: 20, height: 20
@@ -73,8 +73,8 @@
             });
             let location2 = new joint.shapes.standard.Path({
                 position: {
-                    x: 776,
-                    y: 360
+                    x: 700,
+                    y: 394
                 },
                 size: {
                     width: 20, height: 20
@@ -90,8 +90,8 @@
             });
             let location3 = new joint.shapes.standard.Path({
                 position: {
-                    x: 696,
-                    y: 360
+                    x: 760,
+                    y: 324
                 },
                 size: {
                     width: 20, height: 20
@@ -476,7 +476,8 @@
         },
         methods: {
             rightClick: function(e) {
-                alert("gogo gadget")
+                console.log(e);
+                alert("x:" + e.offsetX + " , y:" + e.offsetY)
             }
         }
     }

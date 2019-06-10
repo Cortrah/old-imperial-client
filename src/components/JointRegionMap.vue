@@ -16,8 +16,8 @@
         },
         mounted: function() {
 
-            var graph = new joint.dia.Graph;
-            var paper = new joint.dia.Paper({
+            let graph = new joint.dia.Graph;
+            let paper = new joint.dia.Paper({
                 el: document.getElementById('graphie'),
                 width: 4800,
                 height: 2400,
@@ -29,7 +29,7 @@
                 model: graph,
             });
 
-            var region1 = new joint.shapes.standard.Path({
+            let region1 = new joint.shapes.standard.Path({
                 position: { x: 676, y: 249 },
                 size: { width: 75, height: 117 },
                 attrs: {
@@ -49,11 +49,65 @@
                             c-0.494-4.015,0.681-6.363,0-9.518c-0.729-3.356-3.53-4.55-3.501-7.012C699.816,253.563,703.552,254.01,704.271,249.39z`
                     },
                     label: {
-                        text: 'Takohn'
+                        text: '★\n' + 'Takohn\n (4331)i\n🃟'
                     }
                 }
             });
-            var region2 = new joint.shapes.standard.Path({
+
+            let location1 = new joint.shapes.standard.Path({
+                position: {
+                    x: 676,
+                    y: 260
+                },
+                size: {
+                    width: 20, height: 20
+                },
+                attrs: {
+                    body: {
+                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    },
+                    label: {
+                        text: 'Ahnupat'
+                    }
+                }
+            });
+            let location2 = new joint.shapes.standard.Path({
+                position: {
+                    x: 776,
+                    y: 360
+                },
+                size: {
+                    width: 20, height: 20
+                },
+                attrs: {
+                    body: {
+                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    },
+                    label: {
+                        text: 'Tz\'akat'
+                    }
+                }
+            });
+            let location3 = new joint.shapes.standard.Path({
+                position: {
+                    x: 696,
+                    y: 360
+                },
+                size: {
+                    width: 20, height: 20
+                },
+                attrs: {
+                    body: {
+                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    },
+                    label: {
+                        text: 'Port'
+                    }
+                }
+            });
+
+
+            let region2 = new joint.shapes.standard.Path({
                 position: { x: 640, y: 324 },
                 size: { width: 103, height: 112 },
                 attrs: {
@@ -76,7 +130,7 @@
                     }
                 }
             });
-            var region3 = new joint.shapes.standard.Path({
+            let region3 = new joint.shapes.standard.Path({
                 position: { x: 578, y: 390 },
                 size: { width: 108, height: 77 },
                 attrs: {
@@ -103,7 +157,7 @@
             });
 
 
-            var region4 = new joint.shapes.standard.Path({
+            let region4 = new joint.shapes.standard.Path({
                 position: { x: 501, y: 415 },
                 size: { width: 89, height: 105 },
                 attrs: {
@@ -128,7 +182,7 @@
                     }
                 }
             });
-            var region5 = new joint.shapes.standard.Path({
+            let region5 = new joint.shapes.standard.Path({
                 position: { x: 567, y: 464 },
                 size: { width: 100, height: 92 },
                 attrs: {
@@ -157,7 +211,7 @@
                     }
                 }
             });
-            var region6 = new joint.shapes.standard.Path({
+            let region6 = new joint.shapes.standard.Path({
                 position: { x: 692, y: 516 },
                 size: { width: 70, height: 51 },
                 attrs: {
@@ -178,7 +232,7 @@
                 }
             });
 
-            var region7 = new joint.shapes.standard.Path({
+            let region7 = new joint.shapes.standard.Path({
                 position: { x: 665, y: 605 },
                 size: { width: 33, height: 35 },
                 attrs: {
@@ -196,7 +250,7 @@
                     }
                 }
             });
-            var region8 = new joint.shapes.standard.Path({
+            let region8 = new joint.shapes.standard.Path({
                 position: { x: 312, y: 139 },
                 size: { width: 592, height: 363 },
                 attrs: {
@@ -237,7 +291,7 @@
             });
 
 
-            var region9 = new joint.shapes.standard.Path({
+            let region9 = new joint.shapes.standard.Path({
                 position: { x: 599, y: 415 },
                 size: { width: 531, height: 335 },
                 attrs: {
@@ -305,7 +359,7 @@
             });
 
 
-            var region10 = new joint.shapes.standard.Path({
+            let region10 = new joint.shapes.standard.Path({
                 position: { x: 453, y: 458 },
                 size: { width: 88, height: 97 },
                 attrs: {
@@ -329,7 +383,7 @@
                     }
                 }
             });
-            var region11 = new joint.shapes.standard.Path({
+            let region11 = new joint.shapes.standard.Path({
                 position: { x: 525, y: 534 },
                 size: { width: 78, height: 85 },
                 attrs: {
@@ -355,7 +409,7 @@
             });
 
 
-            var leader1 = new joint.shapes.standard.Path({
+            let leader1 = new joint.shapes.standard.Path({
                 position: {
                     x: 520,
                     y: 80
@@ -376,7 +430,16 @@
             graph.addCells([
                 region1, region2, region3, region4, region5,
                 region6, region7, region8, region9, region10,
-                region11, leader1]);
+                region11, leader1
+            ]);
+
+            graph.addCells([
+                location1, location2, location3
+            ]);
+
+            graph.addCells([
+                leader1
+            ]);
 
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {

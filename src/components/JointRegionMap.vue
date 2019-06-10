@@ -16,6 +16,8 @@
         },
         mounted: function() {
 
+
+
             let graph = new joint.dia.Graph;
             let paper = new joint.dia.Paper({
                 el: document.getElementById('graphie'),
@@ -28,6 +30,11 @@
                 drawGrid: true,
                 model: graph,
             });
+            // new joint.ui.Tooltip({
+            //     target: '[data-tooltip]',
+            //     direction: 'auto',
+            //     padding: 10
+            // });
 
             let region1 = new joint.shapes.standard.Path({
                 position: { x: 676, y: 249 },
@@ -36,6 +43,7 @@
                     pathId: '_x33_0',
                     regionId: 247,
                     pathFill: '#737144',
+                    tooltip: "Place of the innumerable Ghoulfarb Fullsuit",
                     body: {
                         refD: `M704.271,249.39c2.066,2.598,3.596,5.747,6.503,7.513c5.604-0.062,11.917,0.58,15.505-1.503
                             c2.272,0.268,1.658,2.26,2.5,3.506c1.213,1.797,3.498,2.824,4.502,5.009c1.618,3.522-0.062,7.666,1,11.521
@@ -473,6 +481,24 @@
                     }
                 }
             });
+
+            paper.on('cell:mouseover', function(cellView, evt, x, y) {
+
+                console.log(cellView.model.attributes.attrs.tooltip);
+                // var cell = cellView.model;
+                // var cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
+                //
+                // if (cellViewsBelow.length) {
+                //     // Note that the findViewsFromPoint() returns the view for the `cell` itself.
+                //     var cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
+                //
+                //     // Prevent recursive embedding.
+                //     if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
+                //         cellViewBelow.model.embed(cell);
+                //     }
+                // }
+            });
+
         },
         methods: {
             rightClick: function(e) {

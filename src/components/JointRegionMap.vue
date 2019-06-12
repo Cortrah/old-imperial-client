@@ -14,6 +14,16 @@
         props: {
             msg: String,
         },
+        // data: {
+        //     leader1: null,
+        //     location1: null,
+        //     location2: null,
+        //     location3: null,
+        //     region1: null,
+        //     region2: null,
+        //     region3: null,
+        //     link: null,
+        // },
         mounted: function() {
 
             let graph = new joint.dia.Graph;
@@ -22,7 +32,7 @@
                 width: 4800,
                 height: 2400,
                 background: {
-                    color: 'rgb(157,178,194)'
+                    color: 'rgb(50,50,50)'
                 },
                 gridSize: 10,
                 drawGrid: true,
@@ -56,59 +66,59 @@
                 }
             });
 
-            let location1 = new joint.shapes.standard.Path({
+             let location1 = new joint.shapes.standard.Image({
                 position: {
-                    x: 740,
+                    x: 720,
                     y: 324
                 },
                 size: {
-                    width: 20, height: 20
+                    width: 38, height: 18
                 },
                 attrs: {
                     cellType: "Location",
-                    body: {
-                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    root: {
+                        title: 'Ahnupat'
                     },
-                    label: {
-                        text: 'Ahnupat',
-                        fill: 'blue'
+                    image: {
+                        xlinkHref: './img/glyphs/city3.png',
+                    },
+                }
+            });
+            let location2 = new joint.shapes.standard.Image({
+                position: {
+                    x: 760,
+                    y: 330
+                },
+                size: {
+                    width: 15,
+                    height: 15
+                },
+                attrs: {
+                    cellType: "Location",
+                    root: {
+                        title: 'Port'
+                    },
+                    image: {
+                        xlinkHref: './img/glyphs/port.png',
                     }
                 }
             });
-            let location2 = new joint.shapes.standard.Path({
+            let location3 = new joint.shapes.standard.Image({
                 position: {
                     x: 700,
                     y: 394
                 },
                 size: {
-                    width: 20, height: 20
+                    width: 30, height: 23
                 },
                 attrs: {
                     cellType: "Location",
-                    body: {
-                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    root: {
+                        title: 'Tza\'kapat'
                     },
-                    label: {
-                        text: 'Tz\'akat'
-                    }
-                }
-            });
-            let location3 = new joint.shapes.standard.Path({
-                position: {
-                    x: 760,
-                    y: 324
-                },
-                size: {
-                    width: 20, height: 20
-                },
-                attrs: {
-                    cellType: "Location",
-                    body: {
-                        refD: `M10 10 H 90 V 90 H 10 L 10 10`
+                    image: {
+                        xlinkHref: './img/glyphs/city2.png',
                     },
-                    label: {
-                        text: 'Port'
-                    }
                 }
             });
 
@@ -422,8 +432,8 @@
 
             let leader1 = new joint.shapes.standard.Path({
                 position: {
-                    x: 520,
-                    y: 80
+                    x: 780,
+                    y: 180
                 },
                 size: {
                     width: 20, height: 20
@@ -453,14 +463,6 @@
                 leader1
             ]);
 
-            let image = new joint.shapes.standard.Image();
-            image.resize(20, 20);
-            image.position(50, 50);
-            image.attr('root/title', 'joint.shapes.standard.Image');
-            image.attr('tooltip', 'Port Smith');
-            image.attr('image/xlinkHref', './img/glyphs/port.png');
-            image.addTo(graph);
-
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {
 
@@ -475,6 +477,23 @@
                     if (cell.get('parent')) {
                         graph.getCell(cell.get('parent')).unembed(cell);
                     }
+
+                    let link1 = new joint.shapes.standard.Link();
+                    link1.source(leader1);
+                    link1.target(location1);
+                    link1.addTo(graph);
+
+                    let link2 = new joint.shapes.standard.Link();
+                    link2.source(leader1);
+                    link2.target(region1);
+                    link2.addTo(graph);
+
+                    let link3 = new joint.shapes.standard.Link();
+                    link3.source(leader1);
+                    link3.target(region2);
+                    link3.addTo(graph);
+
+
                 } else {
                     evt.data.guarded = true;
                 }
@@ -482,6 +501,8 @@
 
             // When the dragged cell is dropped over another cell, let it become a child of the element below.
             paper.on('cell:pointerup', function(cellView, evt, x, y) {
+
+                //graph.removeLinks(this.leader1);
 
                 let cell = cellView.model;
                 let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());

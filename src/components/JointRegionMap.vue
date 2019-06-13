@@ -14,16 +14,11 @@
         props: {
             msg: String,
         },
-        // data: {
-        //     leader1: null,
-        //     location1: null,
-        //     location2: null,
-        //     location3: null,
-        //     region1: null,
-        //     region2: null,
-        //     region3: null,
-        //     link: null,
-        // },
+        data () {
+            return {
+                graph: Object,
+            }
+        },
         mounted: function() {
 
             let graph = new joint.dia.Graph;
@@ -66,7 +61,7 @@
                 }
             });
 
-             let location1 = new joint.shapes.standard.Image({
+            let location1 = new joint.shapes.standard.Image({
                 position: {
                     x: 720,
                     y: 324

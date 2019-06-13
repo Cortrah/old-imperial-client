@@ -5,10 +5,10 @@ import store from './store'
 import './registerServiceWorker'
 import VueDraggable from 'vue-draggable'
 
-//import joint from 'jointjs';
-//import joint from "jointjs"
-//import v from "jointjs"
-//import g from "jointjs"
+// import * as _ from "lodash";
+// import joint from '../../node_modules/jointjs';
+// import {g as g} from "jointjs";
+// import {Vectorizer as V} from 'jointjs';
 
 //Object.defineProperty(Vue.prototype, $joint,  {value: joint});
 //Object.defineProperty(Vue.prototype, v,  {value: v});
@@ -19,9 +19,11 @@ Vue.config.productionTip = false;
 
 Vue.use(VueDraggable)
 
-new Vue({
+let appView = new Vue({
     router,
     store,
     render: h => h(App)
 }).$mount('#app');
+
+store.dispatch('onInit', appView);
 

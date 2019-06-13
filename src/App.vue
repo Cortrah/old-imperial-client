@@ -13,20 +13,19 @@
                 </div>
             </header>
 
-            <left>
-                <h3>
-                    Narrative
-                </h3>
-            </left>
+<!--            <left>-->
+<!--                <h3>-->
+<!--                    Narrative-->
+<!--                </h3>-->
+<!--            </left>-->
 
             <main>
                 <router-view/>
-                <img src="./assets/logo.png">
             </main>
 
-            <right>
-                <leader-actions></leader-actions>
-            </right>
+<!--            <right>-->
+<!--                <leader-actions></leader-actions>-->
+<!--            </right>-->
 
             <footer>
                 <p style="color:whitesmoke">

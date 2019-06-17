@@ -13,19 +13,19 @@
                 </div>
             </header>
 
-<!--            <left>-->
-<!--                <h3>-->
-<!--                    Narrative-->
-<!--                </h3>-->
-<!--            </left>-->
+            <div class="left">
+                <h3>
+                    Narrative
+                </h3>
+            </div>
 
             <main>
                 <router-view/>
             </main>
 
-<!--            <right>-->
-<!--                <leader-actions></leader-actions>-->
-<!--            </right>-->
+            <div class="right">
+                <leader-actions></leader-actions>
+            </div>
 
             <footer>
                 <p style="color:whitesmoke">
@@ -62,7 +62,7 @@
                 "left content right"
                 "footer footer footer";
         height: 100vh;
-        grid-template-columns: 320px 1fr 320px;
+        grid-template-columns: 760px 1fr 220px;
         grid-template-rows: auto 1fr auto;
         grid-gap: 10px;
         overflow: hidden;
@@ -76,33 +76,33 @@
         background: #000000;
     }
 
-    left {
+    .left {
         display: flex;
         grid-area: left;
         align-items: center;
         justify-content: center;
         margin-left: 0.5rem;
-        background-color: antiquewhite;
+        background-color: #f4f4f4;
         flex: 0 0 auto;
     }
 
     main {
         position: absolute;
         top: 90px;
-        left: 320px;
-        right: 320px;
-        height: 50%;
+        left: 760px;
+        right: 220px;
+        height: 80%;
         overflow: scroll;
         box-sizing: border-box;
     }
 
-    right {
+    .right {
         display: flex;
         grid-area: right;
         align-items: center;
         justify-content: center;
         margin-right: 0.5rem;
-        background-color: beige;
+        background-color: #e4e4e4;
         flex: 0 0 auto;
     }
 

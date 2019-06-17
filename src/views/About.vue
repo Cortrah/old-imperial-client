@@ -58,66 +58,67 @@
                 }
             });
 
-            // // First, unembed the cell that has just been grabbed by the user.
-            // paper.on('cell:pointerdown', function(cellView, evt, x, y) {
-            //
-            //     if (cellView.model.attributes.attrs.cellType === "Leader") {
-            //         let cell = cellView.model;
-            //
-            //         if (!cell.get('embeds') || cell.get('embeds').length === 0) {
-            //             // Show the dragged element above all the other cells (except when the element is a parent).
-            //             cell.toFront();
-            //         }
-            //
-            //         if (cell.get('parent')) {
-            //             graph.getCell(cell.get('parent')).unembed(cell);
-            //         }
-            //
-            //         let link1 = new joint.shapes.standard.Link();
-            //         link1.source(leader1);
-            //         link1.target(location1);
-            //         link1.addTo(graph);
-            //
-            //         let link2 = new joint.shapes.standard.Link();
-            //         link2.source(leader1);
-            //         link2.target(region1);
-            //         link2.addTo(graph);
-            //
-            //         let link3 = new joint.shapes.standard.Link();
-            //         link3.source(leader1);
-            //         link3.target(region2);
-            //         link3.addTo(graph);
-            //
-            //
-            //     } else {
-            //         evt.data.guarded = true;
-            //     }
-            // });
-            //
-            // // When the dragged cell is dropped over another cell, let it become a child of the element below.
-            // paper.on('cell:pointerup', function(cellView, evt, x, y) {
-            //
-            //     //graph.removeLinks(this.leader1);
-            //
-            //     let cell = cellView.model;
-            //     let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
-            //
-            //     if (cellViewsBelow.length) {
-            //         // Note that the findViewsFromPoint() returns the view for the `cell` itself.
-            //         let cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
-            //
-            //         // Prevent recursive embedding.
-            //         if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
-            //             cellViewBelow.model.embed(cell);
-            //         }
-            //     }
-            // });
-            //
-            // paper.on('cell:mouseover', function(cellView, evt, x, y) {
-            //     if (cellView.model.attributes.attrs.cellType === "Region") {
-            //         console.log(cellView.model.attributes.attrs.tooltip);
-            //     }
-            // });
+            // First, unembed the cell that has just been grabbed by the user.
+            this.paper.on('cell:pointerdown', function(cellView, evt, x, y) {
+                console.log("pointerdown");
+
+                if (cellView.model.attributes.attrs.cellType === "Leader") {
+                    let cell = cellView.model;
+
+                    if (!cell.get('embeds') || cell.get('embeds').length === 0) {
+                        // Show the dragged element above all the other cells (except when the element is a parent).
+                        cell.toFront();
+                    }
+
+                    if (cell.get('parent')) {
+                        graph.getCell(cell.get('parent')).unembed(cell);
+                    }
+
+                    let link1 = new joint.shapes.standard.Link();
+                    link1.source(leader1);
+                    link1.target(location1);
+                    link1.addTo(graph);
+
+                    let link2 = new joint.shapes.standard.Link();
+                    link2.source(leader1);
+                    link2.target(region1);
+                    link2.addTo(graph);
+
+                    let link3 = new joint.shapes.standard.Link();
+                    link3.source(leader1);
+                    link3.target(region2);
+                    link3.addTo(graph);
+
+
+                } else {
+                    evt.data.guarded = true;
+                }
+            });
+
+            // When the dragged cell is dropped over another cell, let it become a child of the element below.
+            this.paper.on('cell:pointerup', function(cellView, evt, x, y) {
+
+                //graph.removeLinks(this.leader1);
+
+                let cell = cellView.model;
+                let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
+
+                if (cellViewsBelow.length) {
+                    // Note that the findViewsFromPoint() returns the view for the `cell` itself.
+                    let cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
+
+                    // Prevent recursive embedding.
+                    if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
+                        cellViewBelow.model.embed(cell);
+                    }
+                }
+            });
+
+            this.paper.on('cell:mouseover', function(cellView, evt, x, y) {
+                if (cellView.model.attributes.attrs.cellType === "Region") {
+                    console.log(cellView.model.attributes.attrs.tooltip);
+                }
+            });
         },
         methods: {
             rightClick: function(e) {

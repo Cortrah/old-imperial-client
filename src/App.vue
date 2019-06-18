@@ -45,11 +45,27 @@
         components: {
             LeaderActions
         },
+        created() {
+            this.$store.dispatch(
+                {
+                    type:'onDispatch',
+                    command: new LoadRegions()
+                }
+            ).then(
+                result => {
+                    // all's well
+                    console.log('Initial loading of regions succeeded');
+                }
+            ).catch(
+                error => {
+                    console.log('Initial loading of region data failed');
+                }
+            );
+        },
     }
 </script>
 
 <style>
-
     html, body {
         height: 100%;
         margin: 0;

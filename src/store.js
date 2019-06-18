@@ -6,9 +6,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        isServerLive: false,
+        regions: [],
         guy: 'one',
         appView: null,
         graph: null,
+        getters: {
+            editingRegion: state => (regionId) =>{
+                let indexById = state.regions.findIndex( region => region.id == regionId);
+                return state.regions[indexById];
+            }
+        },
         static: {
             colors: {
                 "hovered": "#FFFFFF",

@@ -15,14 +15,14 @@ export function addRegion(region) {
 }
 
 /**
- * Update an owner
+ * Update a region
  */
 export function updateRegion(region) {
     return axios.put("/regions/" + region.id, region);
 }
 
 /**
- * Soft delete an region by its id
+ * Delete an region by its id
  */
 export function deleteRegion(id) {
     return axios({

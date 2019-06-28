@@ -7,9 +7,13 @@
                     Old Imperial Client
                 </h1>
                 <div id="nav">
-                    <router-link to="/">Home</router-link>
+                    <router-link to="/">
+                        Home
+                    </router-link>
                     |
-                    <router-link to="/about">About</router-link>
+                    <router-link to="/about">
+                        About
+                    </router-link>
                 </div>
             </header>
 
@@ -78,7 +82,7 @@
                 "left content right"
                 "footer footer footer";
         height: 100vh;
-        grid-template-columns: 760px 1fr 220px;
+        grid-template-columns: 260px 1fr 220px;
         grid-template-rows: auto 1fr auto;
         grid-gap: 10px;
         overflow: hidden;
@@ -105,7 +109,7 @@
     main {
         position: absolute;
         top: 90px;
-        left: 760px;
+        left: 260px;
         right: 220px;
         height: 80%;
         overflow: scroll;

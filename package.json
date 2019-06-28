@@ -15,6 +15,7 @@
     "lodash": "^4.17.11",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.6",
+    "vue-context": "^4.0.2",
     "vue-draggable": "^2.0.2",
     "vue-free-transform": "^1.0.11",
     "vue-router": "^3.0.1",

@@ -1,22 +1,39 @@
 <template>
-    <div id="graphie" @contextmenu.prevent="rightClick($event)"></div>
+    <div>
+        <div id="graphie"
+             @contextmenu.prevent="$refs.menu.open">
+        </div>
+        <vue-context ref="menu">
+            <li>
+                <a href="#" @click.prevent="onClick($event.target.innerText)">
+                    Option 1
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="onClick($event.target.innerText)">
+                    Option 2
+                </a>
+            </li>
+        </vue-context>
+    </div>
 </template>
 
 <script>
     import * as _ from "lodash";
     import joint from '../../node_modules/jointjs';
-    import {g as g} from "jointjs";
-    import {Vectorizer as V} from 'jointjs';
-
+    import { VueContext } from 'vue-context';
 
     export default {
         name: 'JointMap',
+        components: {VueContext},
         props: {
             msg: String,
         },
         data () {
             return {
                 graph: Object,
+                paper: Object,
+                region1: Object,
             }
         },
         mounted: function() {
@@ -167,7 +184,6 @@
                     }
                 }
             });
-
             let region4 = new joint.shapes.standard.Path({
                 position: { x: 501, y: 415 },
                 size: { width: 89, height: 105 },
@@ -245,7 +261,6 @@
                     }
                 }
             });
-
             let region7 = new joint.shapes.standard.Path({
                 position: { x: 665, y: 605 },
                 size: { width: 33, height: 35 },
@@ -305,7 +320,6 @@
                     }
                 }
             });
-
             let region9 = new joint.shapes.standard.Path({
                 position: { x: 599, y: 415 },
                 size: { width: 531, height: 335 },
@@ -373,7 +387,6 @@
                     }
                 }
             });
-
             let region10 = new joint.shapes.standard.Path({
                 position: { x: 453, y: 458 },
                 size: { width: 88, height: 97 },
@@ -520,9 +533,12 @@
             });
         },
         methods: {
-            rightClick: function(e) {
-                console.log(e);
-                console.log("x:" + e.offsetX + " , y:" + e.offsetY)
+            // rightClick: function(e) {
+            //     console.log(e);
+            //     console.log("x:" + e.offsetX + " , y:" + e.offsetY)
+            // },
+            onClick (text) {
+                alert(`You clicked "${text}"!`);
             }
         }
     }

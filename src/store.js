@@ -7,9 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         isServerLive: false,
-        regions: [],
-        guy: 'one',
         appView: null,
+        regions: [],
         graph: null,
         getters: {
             editingRegion: state => (regionId) =>{

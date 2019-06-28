@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import VueDraggable from 'vue-draggable'
+import { VueContext } from 'vue-context'
 
 // import * as _ from "lodash";
 // import joint from '../../node_modules/jointjs';
@@ -17,7 +18,8 @@ import VueDraggable from 'vue-draggable'
 
 Vue.config.productionTip = false;
 
-Vue.use(VueDraggable)
+Vue.use(VueDraggable);
+Vue.use(VueContext);
 
 let appView = new Vue({
     router,

@@ -5,9 +5,6 @@
 <script>
     import * as _ from "lodash";
     import joint from '../../node_modules/jointjs';
-    import {g as g} from "jointjs";
-    import {Vectorizer as V} from 'jointjs';
-
 
     export default {
         name: 'About',

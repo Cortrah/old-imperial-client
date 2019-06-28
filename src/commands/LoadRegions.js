@@ -33,11 +33,11 @@ export default class LoadRegions extends Command{
     // mutation
     do(state, payload) {
         state.regions = [];
-        // first add any owners that were sent in via the constructor
+        // first add any regions that were sent in via the constructor
         this.data.forEach( region => {
             state.regions.push(new Region(region));
         });
-        // then add any owners that were fetched during the onDispatch action
+        // then add any regions that were fetched during the onDispatch action
         payload.results.data.forEach(region => {
             state.regions.push(new Region(region));
         });

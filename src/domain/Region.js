@@ -1,3 +1,45 @@
+let defaults = {
+    id : '',
+    pathId: '',
+    name: "",
+    label: "",
+    tooltip: "",
+    description: "",
+    notes: "",
+    turn: null,
+    realm: null,
+    allegiance: null,
+    resistance: 3,
+    kindred: null,
+    terrain: null,
+    religion: null,
+    statuses: null,
+    features: null,
+    constructs: null,
+    locations: [],
+    majorMap: null,
+    gp: 0,
+    ap: 0,
+    nfp: 0,
+    mana: 0,
+    pwb: 0,
+    tv: 0,
+    hasRoad: false,
+    isSecret: false,
+    bordersVolcano: false,
+    isInimical: false,
+    cellType: "Region",
+    pathFill: '#F5F5F5',
+    x: 0,
+    y: 0,
+    w: 100,
+    h: 100,
+    cX: 50,
+    cY: 50,
+    pathData: `m0,0 L100,0 L100,100 L0,100 z`,
+};
+
+
 export default class Region {
 
     constructor(options) {
@@ -26,16 +68,20 @@ export default class Region {
                 })
             }
         } else {
-            // a default for testing
-            this.id = '0';
-            this.pathId = '0';
-            this.name = "Region Name";
-            this.cellType = "Region";
-            this.pathFill = '#737144';
-            this.tooltip = "Toolie magoulie";
-            this.pathData = `M0,0 L100,0 L100,100 L0,100 z`;
-            this.locations = [];
+            // use defaults
+            this.id = defaults.id;
+            this.pathId = defaults.pathId;
+            this.name = defaults.name;
+            this.cellType = defaults.cellType;
+            this.pathFill = defaults.pathFill;
+            this.tooltip = defaults.tooltip;
+            this.pathData = defaults.pathData;
+            this.locations = defaults.locations;
         }
+    }
+
+    getMock() {
+        return this.defaults;
     }
 }
 // position: { x: 100, y: 100 },

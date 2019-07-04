@@ -43,6 +43,22 @@
 
 <script>
     import LeaderActions from "./components/LeaderActions";
+    import LoadRegions from './commands/LoadRegions';
+    import axios from 'axios';
+
+    const BORDER_TYPES_QUERY = `{
+          borderTypeList {
+            id,
+            name,
+            code,
+            description,
+            landCost,
+            airCost,
+            navalCost,
+            manaCost,
+            isDirectional,
+        }
+    }`;
 
     export default {
         name: "App",
@@ -63,6 +79,17 @@
             ).catch(
                 error => {
                     console.log('Initial loading of region data failed');
+                }
+            );
+
+            let res = axios.post('http://localhost:8080/graphql', {
+                query: BORDER_TYPES_QUERY
+            }).then(
+                response => {
+                    console.log(response.data.data);
+                },
+                error => {
+                    throw error;
                 }
             );
         },

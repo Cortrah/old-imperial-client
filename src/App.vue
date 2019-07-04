@@ -3,14 +3,15 @@
 
         <div class="container">
             <header>
-                <h1 style="color:whitesmoke">
+                <h1>
                     Old Imperial Client
                 </h1>
+                <div ref="box" class="box"></div>
                 <div id="nav">
                     <router-link to="/">
                         Home
                     </router-link>
-                    |
+                        |
                     <router-link to="/about">
                         About
                     </router-link>
@@ -18,9 +19,9 @@
             </header>
 
             <div class="left">
-                <h3>
+                <h2>
                     Narrative
-                </h3>
+                </h2>
             </div>
 
             <main>
@@ -32,9 +33,9 @@
             </div>
 
             <footer>
-                <p style="color:whitesmoke">
+                <h3>
                     Popup Windows
-                </p>
+                </h3>
             </footer>
         </div>
 
@@ -42,28 +43,48 @@
 </template>
 
 <script>
+    import {TimelineMax, Back} from 'gsap'
+
     import LeaderActions from "./components/LeaderActions";
     import LoadRegions from './commands/LoadRegions';
-    import axios from 'axios';
-
-    const BORDER_TYPES_QUERY = `{
-          borderTypeList {
-            id,
-            name,
-            code,
-            description,
-            landCost,
-            airCost,
-            navalCost,
-            manaCost,
-            isDirectional,
-        }
-    }`;
 
     export default {
         name: "App",
         components: {
             LeaderActions
+        },
+        data () {
+            return {
+                timeLine: new TimelineMax(),
+            }
+        },
+        mounted() {
+            this.timeLine.fromTo(
+                this.$refs.box, 3,
+                {
+                    x: -300,
+                    rotation: -180,
+                    scale: .4,
+                    background: '#852c3d',
+                },
+                {
+                    x: 300,
+                    rotation: 190,
+                    background: '#336699',
+                    scale: .8,
+                    ease: Back.easeInOut,
+                    onComplete: this.ungo,
+                    onReverseComplete: this.gogo,
+                }
+            );
+        },
+        methods: {
+            gogo() {
+                this.timeLine.play();
+            },
+            ungo() {
+                this.timeLine.reverse();
+            },
         },
         created() {
             this.$store.dispatch(
@@ -74,22 +95,13 @@
             ).then(
                 result => {
                     // all's well
+                    console.log(result);
                     console.log('Initial loading of regions succeeded');
                 }
             ).catch(
                 error => {
+                    console.log(error);
                     console.log('Initial loading of region data failed');
-                }
-            );
-
-            let res = axios.post('http://localhost:8080/graphql', {
-                query: BORDER_TYPES_QUERY
-            }).then(
-                response => {
-                    console.log(response.data.data);
-                },
-                error => {
-                    throw error;
                 }
             );
         },
@@ -100,6 +112,10 @@
     html, body {
         height: 100%;
         margin: 0;
+    }
+
+    h1, h3, a {
+        color: whitesmoke;
     }
 
     .container {
@@ -151,6 +167,12 @@
         margin-right: 0.5rem;
         background-color: #e4e4e4;
         flex: 0 0 auto;
+    }
+
+    .box {
+        height: 60px;
+        width: 60px;
+        background: #60653e;
     }
 
     footer {

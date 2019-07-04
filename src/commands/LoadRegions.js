@@ -10,7 +10,9 @@ export default class LoadRegions extends Command{
 
     // actions
     async onDispatch(context, action) {
-        if(context.rootState.isServerLive){
+        console.log("loading regions dispatched");
+        if(context.state.isServerLive){
+            console.log("live");
             await getRegions()
                 .then(
                     response => {
@@ -21,6 +23,7 @@ export default class LoadRegions extends Command{
                     }
                 );
         } else {
+            console.log("simulated");
             let mockResponse = {
                 data:[
                     new Region(),
@@ -33,12 +36,16 @@ export default class LoadRegions extends Command{
     // mutation
     do(state, payload) {
         state.regions = [];
+
         // first add any regions that were sent in via the constructor
-        this.data.forEach( region => {
-            state.regions.push(new Region(region));
-        });
+        if(this.data){
+            this.data.forEach( region => {
+                state.regions.push(new Region(region));
+            });
+        };
+
         // then add any regions that were fetched during the onDispatch action
-        payload.results.data.forEach(region => {
+        payload.data.forEach(region => {
             state.regions.push(new Region(region));
         });
     }

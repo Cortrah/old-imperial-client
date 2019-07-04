@@ -15,7 +15,6 @@ import { VueContext } from 'vue-context'
 //Object.defineProperty(Vue.prototype, v,  {value: v});
 //Object.defineProperty(Vue.prototype, g,  {value: g});
 
-
 Vue.config.productionTip = false;
 
 Vue.use(VueDraggable);

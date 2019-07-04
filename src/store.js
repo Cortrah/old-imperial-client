@@ -9,7 +9,7 @@ export default new Vuex.Store({
         isServerLive: false,
         appView: null,
         regions: [],
-        graph: null,
+        leaderActions: [],
         getters: {
             editingRegion: state => (regionId) =>{
                 let indexById = state.regions.findIndex( region => region.id == regionId);

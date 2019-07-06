@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import joint from '../node_modules/jointjs';
 
+import Region from './domain/Region';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({

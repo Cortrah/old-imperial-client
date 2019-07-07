@@ -19,6 +19,7 @@ let defaults = {
     features: null,
     constructs: null,
     locations: [],
+    regionBorders: [],
     majorMap: null,
     gp: 0,
     ap: 0,
@@ -60,9 +61,15 @@ export default class Region {
             this.locations = [];
             if(options.hasOwnProperty('locations') && options.locations !== null) {
                 options.locations.forEach(item => {
-                    console.log(item);
                     let location = new Location(item);
                     this.locations.push(location);
+                })
+            }
+            this.regionBorders = [];
+            if(options.hasOwnProperty('regionBorders') && options.regionBorders !== null) {
+                options.regionBorders.forEach(item => {
+                    let regionBorder = new RegionBorder(item);
+                    this.locations.push(regionBorder);
                 })
             }
         } else {
@@ -75,6 +82,7 @@ export default class Region {
             this.tooltip = defaults.tooltip;
             this.pathData = defaults.pathData;
             this.locations = defaults.locations;
+            this.regionBorders = defaults.regionBorders;
         }
     }
 

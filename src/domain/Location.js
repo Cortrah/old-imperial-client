@@ -6,6 +6,7 @@ let defaults = {
     description: "",
     notes: "",
     cellType: "Location",
+    icon: "./img/glyphs/gate.png",
     pathFill: '#F5F5F5',
     x: 0,
     y: 0,
@@ -29,6 +30,7 @@ export default class Location {
             this.notes = options.notes || "";
             this.cellType = "Location";
             this.pathFill = "#737144";
+            this.icon = options.icon || defaults.icon;
             this.x = options.x || defaults.x;
             this.y = options.y || defaults.y;
             this.w = options.w || defaults.w;
@@ -57,10 +59,10 @@ export default class Location {
             attrs: {
                 cellType: "Location",
                 root: {
-                    title: 'city'
+                    title: this.tooltip
                 },
                 image: {
-                    xlinkHref: './img/glyphs/city1.png',
+                    xlinkHref: this.icon,
                 },
             }
         }

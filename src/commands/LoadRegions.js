@@ -10,9 +10,8 @@ export default class LoadRegions extends Command{
 
     // actions
     async onDispatch(context, action) {
-        console.log("loading regions dispatched");
+
         if(context.state.isServerLive){
-            console.log("live");
             await getRegions()
                 .then(
                     response => {
@@ -23,7 +22,6 @@ export default class LoadRegions extends Command{
                     }
                 );
         } else {
-            console.log("simulated");
             let mockResponse = {
                 data:[
                     {
@@ -47,6 +45,18 @@ export default class LoadRegions extends Command{
                         "locations": [
                             {
                                 "id": 0,
+                                "name": "Takohn:co",
+                                "code": "Tak:co",
+                                "label": "",
+                                "icon": "./img/glyphs/tarotist1.png",
+                                "w": 30,
+                                "h": 30,
+                                "x": 740,
+                                "y": 4144,
+                                "path": "m0,0 L30,0 L30,30 L0,30 z"
+                            },
+                            {
+                                "id": 1,
                                 "name": "Ahnupat",
                                 "code": "Ahn",
                                 "label": "",
@@ -58,7 +68,7 @@ export default class LoadRegions extends Command{
                                 "path": "m0,0 L30,0 L30,30 L0,30 z"
                             },
                             {
-                                "id": 1,
+                                "id": 2,
                                 "name": "Ahnupat:Port",
                                 "code": "P",
                                 "label": "",
@@ -70,7 +80,7 @@ export default class LoadRegions extends Command{
                                 "path": "m0,0 L15,0 L15,15 L0,15 z"
                             },
                             {
-                                "id": 2,
+                                "id": 3,
                                 "name": "Tza'kapat",
                                 "code": "Tza",
                                 "label": "",
@@ -123,7 +133,19 @@ export default class LoadRegions extends Command{
                         "constructs": null,
                         "locations": [
                             {
-                                "id": 3,
+                                "id": 7,
+                                "name": "Chakah:co",
+                                "code": "Chak:co",
+                                "label": "",
+                                "icon": "./img/glyphs/tarotist1.png",
+                                "w": 30,
+                                "h": 23,
+                                "x": 720,
+                                "y": 534,
+                                "path": "m0,0 L30,0 L30,30 L0,30 z"
+                            },
+                            {
+                                "id": 4,
                                 "name": "Rogor",
                                 "code": "Rog",
                                 "label": "",
@@ -135,7 +157,7 @@ export default class LoadRegions extends Command{
                                 "path": "m0,0 L30,0 L30,30 L0,30 z"
                             },
                             {
-                                "id": 4,
+                                "id": 5,
                                 "name": "Rogor:Priory",
                                 "code": "Pr",
                                 "label": "",
@@ -147,7 +169,7 @@ export default class LoadRegions extends Command{
                                 "path": "m0,0 L15,0 L15,15 L0,15 z"
                             },
                             {
-                                "id": 5,
+                                "id": 6,
                                 "name": "Moogoo",
                                 "code": "Moo",
                                 "label": "",
@@ -198,7 +220,20 @@ export default class LoadRegions extends Command{
                         "statuses": null,
                         "features": null,
                         "constructs": null,
-                        "locations": [],
+                        "locations": [
+                            {
+                                "id": 8,
+                                "name": "Cape Sutrom:co",
+                                "code": "CapeS:co",
+                                "label": "",
+                                "icon": "./img/glyphs/town.png",
+                                "w": 30,
+                                "h": 30,
+                                "x": 800,
+                                "y": 154,
+                                "path": "m0,0 L30,0 L30,30 L0,30 z"
+                            },
+                        ],
                         "majorMap": null,
                         "gp": 0,
                         "ap": 0,

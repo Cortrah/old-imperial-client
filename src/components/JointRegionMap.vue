@@ -53,10 +53,14 @@
 
             let regions = this.$store.state.regions;
 
+            // first draw all the regions
             regions.forEach( region => {
-                console.log(region.pathData);
                 let jointView = region.getJointView();
                 graph.addCells([ new joint.shapes.standard.Path( jointView ) ]);
+            });
+
+            // then go through them again for the locations
+            regions.forEach( region => {
                 region.locations.forEach( location => {
                     let jointView = location.getJointView();
                     graph.addCells([ new joint.shapes.standard.Image( jointView ) ])
@@ -92,8 +96,9 @@
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
                     let cell = cellView.model;
 
+                    // if the dragged element is not a parent
                     if (!cell.get('embeds') || cell.get('embeds').length === 0) {
-                        // Show the dragged element above all the other cells (except when the element is a parent).
+                        // Show it above all the other cells
                         cell.toFront();
                     }
 

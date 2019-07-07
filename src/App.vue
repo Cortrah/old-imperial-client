@@ -95,13 +95,12 @@
             ).then(
                 result => {
                     // all's well
-                    console.log(result);
-                    console.log('Initial loading of regions succeeded');
+                    // console.log('Initial loading of regions succeeded');
                 }
             ).catch(
                 error => {
                     console.log(error);
-                    console.log('Initial loading of region data failed');
+                    // console.log('Initial loading of region data failed');
                 }
             );
         },

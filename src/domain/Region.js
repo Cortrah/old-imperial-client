@@ -5,6 +5,7 @@ let defaults = {
     pathId: '',
     name: "",
     label: "",
+    code: "",
     tooltip: "",
     description: "",
     notes: "",
@@ -50,6 +51,7 @@ export default class Region {
             this.id = options.id || null;
             this.pathId = options.pathId || null;
             this.name = options.name || "";
+            this.code = options.code || "";
             this.cellType = "Region";
             this.pathFill = "#f5f5f5";
             this.tooltip = options.tooltip || defaults.tooltip;
@@ -77,6 +79,8 @@ export default class Region {
             this.id = defaults.id;
             this.pathId = defaults.pathId;
             this.name = defaults.name;
+            this.label = defaults.label;
+            this.code = defaults.code;
             this.cellType = defaults.cellType;
             this.pathFill = defaults.pathFill;
             this.tooltip = defaults.tooltip;
@@ -103,7 +107,7 @@ export default class Region {
                     refD: this.pathData
                 },
                 label: {
-                    text: '★\n' + this.name + '\n (4331)i\n⚁'
+                    text: '★\n' + this.label + '\n (4331)i\n⚁'
                 }
             }
         }

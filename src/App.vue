@@ -35,10 +35,15 @@
             <footer>
                 <h3>
                     Popup Windows
+                    <el-button type="text" @click="openModal()">open</el-button>
+                    <el-button type="text" @click="notifyGuy('hoho hi')">note</el-button>
                 </h3>
             </footer>
         </div>
 
+        <div id="modalStack" v-for="(modalObject, index) in modals">
+            <component :modal-data="modalObject.data" :is="modalObject.modalName"/>
+        </div>
     </div>
 </template>
 
@@ -47,14 +52,17 @@
 
     import LeaderActions from "./components/LeaderActions";
     import LoadRegions from './commands/LoadRegions';
+    import GetNameModal from "./components/GetNameModal";
 
     export default {
         name: "App",
         components: {
+            GetNameModal,
             LeaderActions
         },
         data () {
             return {
+                modals: [],
                 timeLine: new TimelineMax(),
             }
         },
@@ -85,6 +93,21 @@
             ungo() {
                 this.timeLine.reverse();
             },
+            openModal() {
+                this.modals.push({
+                    modalName: "GetNameModal",
+                    data:{
+                        initialName: "Joe Joe"
+                    }
+                });
+            },
+            notifyGuy(msg){
+                this.$notify({
+                    title: 'Note',
+                    message: msg,
+                    position: 'bottom-right'
+                });
+            }
         },
         created() {
             this.$store.dispatch(

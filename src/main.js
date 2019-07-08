@@ -5,6 +5,8 @@ import store from './store'
 import './registerServiceWorker'
 import VueDraggable from 'vue-draggable'
 import { VueContext } from 'vue-context'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 // import * as _ from "lodash";
 // import joint from '../../node_modules/jointjs';
@@ -19,6 +21,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueDraggable);
 Vue.use(VueContext);
+Vue.use(ElementUI);
 
 let appView = new Vue({
     router,

@@ -107,7 +107,7 @@ export default class Region {
                     refD: this.pathData
                 },
                 label: {
-                    text: '★\n' + this.label + '\n (4331)i\n⚁'
+                    text: '★\n' + this.name + '\n (4331)i\n⚁'
                 }
             }
         }

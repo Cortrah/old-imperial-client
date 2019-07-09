@@ -4,12 +4,17 @@
         <div class="container">
             <header>
                 <h1>
-                    Old Imperial Client
+                    <img src="./assets/sardarthion_house.png" height="40px" style="padding-left: 10px" >
+                    Old Imperial
                 </h1>
                 <div ref="box" class="box"></div>
                 <div id="nav">
                     <router-link to="/">
                         Home
+                    </router-link>
+                        |
+                    <router-link to="/game">
+                        Game
                     </router-link>
                         |
                     <router-link to="/about">

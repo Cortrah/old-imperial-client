@@ -29,8 +29,8 @@
 </template>
 
 <script>
-    import JointRegionMap from '../components/JointRegionMap.vue'
-    import LeaderActions from "../components/LeaderActions";
+    import JointRegionMap from '../components/JointRegionMap'
+    import LeaderActions from '../components/LeaderActions';
 
     export default {
         name: "Game",
@@ -40,7 +40,6 @@
         },
         methods: {
             openModal() {
-                console.log("openmodal");
                 let dataForModal = {
                     modalName: "GetNameModal",
                     data: {

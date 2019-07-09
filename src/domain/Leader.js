@@ -51,7 +51,7 @@ export default class Leader {
         return this.defaults;
     }
 
-    getJointView() {
+    getJointProps() {
         return {
             position: {
                 x: this.x,

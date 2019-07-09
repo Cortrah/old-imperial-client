@@ -56,7 +56,7 @@ export default class Location {
         return this.defaults;
     }
 
-    getJointView() {
+    getJointProps() {
         return {
             position: {
                 x: this.x,

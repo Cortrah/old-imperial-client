@@ -58,65 +58,59 @@
 
             // first draw all the regions
             regions.forEach( region => {
-                let jointView = new joint.shapes.standard.Path(region.getJointView());
-                this.jointRegions.push(jointView);
-                graph.addCell(jointView);
+                let regionJointView = new joint.shapes.standard.Path(region.getJointProps());
+                this.jointRegions.push(regionJointView);
+                graph.addCell(regionJointView);
             });
 
             // then go through them again for the locations
             regions.forEach( region => {
                 region.locations.forEach( location => {
-                    let jointView = new joint.shapes.standard.Image(location.getJointView());
-                    this.jointLocations.push(jointView);
-                    graph.addCell(jointView);
+                    let locationJointView = new joint.shapes.standard.Image(location.getJointProps());
+                    this.jointLocations.push(locationJointView);
+                    graph.addCell(locationJointView);
 
                     location.leaders.forEach( leader => {
-                        console.log(leader);
-                        let jointView = leader.getJointView();
-                        graph.addCell(new joint.shapes.standard.Path(jointView))
-                    })
+                        let leaderJointView = new joint.shapes.standard.Path(leader.getJointProps());
+                        let newCell = graph.addCell(leaderJointView);
+                        locationJointView.embed(leaderJointView);
+                    });
                 })
             });
 
             let jointRegions = this.jointRegions;
 
-
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {
 
+                console.log('cell:pointerdown');
                 console.log(cellView);
-                console.log(jointRegions);
 
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
-                    this.currentLeader = cellView.model;
-
-                    // if the dragged element is not a parent
-                    //if (!cell.get('embeds') || cell.get('embeds').length === 0) {
-                        // Show it above all the other cells
-                    this.currentLeader.toFront();
-                    //}
+                    this.currentLeader = cellView;
+                    this.currentLeader.model.toFront();
 
                     // get the location
-                    let currentLocation = this.currentLeader.get('parent');
+                    let currentLocationCell = graph.getCell(this.currentLeader.model.get('parent'));
+                    currentLocationCell.unembed(this.currentLeader);
 
-                    //if (cell.get('parent')) {
-                    currentLocation.unembed(this.currentLeader);
-                    //}
+                    let currentRegionCell = graph.getCell(currentLocation.model.get('parent'));
+                    let currentRegionId = currentRegionCell.attrs.regionId;
 
-                    let currentRegionId = currentLocation.get('parent').attrs.regionId;
+                    console.log(currentRegionId);
 
                     // get the other locations of the current region
                     // and the county locations of the bordering regions
                     // and create links to each of them
                     // calculating the costs
-
-                    this.jointRegions.forEach( region => {
-                        let link = new joint.shapes.standard.Link();
-                        link.source(this.currentLeader);
-                        link.target(region.model);
-                        link.addTo(this.graph);
-                        this.links.push(link);
-                    });
+                    //
+                    // this.jointRegions.forEach( region => {
+                    //     let link = new joint.shapes.standard.Link();
+                    //     link.source(this.currentLeader);
+                    //     link.target(region.model);
+                    //     link.addTo(this.graph);
+                    //     this.links.push(link);
+                    // });
                 } else {
                     evt.data.guarded = true;
                 }

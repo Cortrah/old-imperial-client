@@ -47,7 +47,7 @@ let defaults = {
 export default class Region {
 
     constructor(options) {
-        if (options != null) {
+        if (options !== null) {
             this.id = options.id || null;
             this.pathId = options.pathId || null;
             this.name = options.name || "";
@@ -94,7 +94,7 @@ export default class Region {
         return this.defaults;
     }
 
-    getJointView() {
+    getJointProps() {
         return {
             position: { x: this.x, y: this.y },
             size: { width: this.w, height: this.h },

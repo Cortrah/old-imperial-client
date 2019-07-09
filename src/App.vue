@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <h1>
-<!--                <img src="./assets/sardarthion_house.png" height="40px" style="padding-left: 10px" >-->
+                <img src="./assets/sardarthion_house.png" height="40px" style="padding-left: 10px" >
                 Old Imperial
             </h1>
 

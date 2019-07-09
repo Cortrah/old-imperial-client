@@ -3,7 +3,7 @@
         <h1>
             Old Imperial
         </h1>
-<!--        <img src="../assets/oi-logo.png">-->
+        <img src="../assets/oi-logo.png">
         <p>
             And lo and behold... it arose
         </p>

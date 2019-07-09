@@ -22,6 +22,7 @@ Vue.config.productionTip = false;
 Vue.use(VueDraggable);
 Vue.use(VueContext);
 Vue.use(ElementUI);
+Vue.prototype.$bus = new Vue();
 
 let appView = new Vue({
     router,

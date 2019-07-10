@@ -1,12 +1,14 @@
 <template>
     <div id="app">
         <header>
+            <img id="logo" src="./assets/sardarthion_house.png"  >
+
             <h1>
-                <img src="./assets/sardarthion_house.png" height="40px" style="padding-left: 10px" >
                 Old Imperial
             </h1>
 
-            <div ref="box" class="box"></div>
+            <div id="box" ref="box"></div>
+
             <div id="nav">
                 <router-link to="/">
                     Home
@@ -20,6 +22,7 @@
                     About
                 </router-link>
             </div>
+
         </header>
 
         <router-view/>
@@ -78,13 +81,13 @@
             this.timeLine.fromTo(
                     this.$refs.box, 3,
                     {
-                        x: -300,
+                        x: 100,
                         rotation: -180,
                         scale: .4,
                         background: '#852c3d',
                     },
                     {
-                        x: 300,
+                        x: 600,
                         rotation: 190,
                         background: '#336699',
                         scale: .8,
@@ -118,10 +121,10 @@
             },
 
             gogo() {
-                //this.timeLine.play();
+                this.timeLine.play();
             },
             ungo() {
-                //this.timeLine.reverse();
+                this.timeLine.reverse();
             },
         },
     }
@@ -138,13 +141,26 @@
     }
 
     header {
+        display: flex;
+        width: 100%;
         height: 60px;
         background: #000000;
     }
 
-    .box {
+    #logo {
+        height: 40px;
+        padding: 10px;
+    }
+
+    #box {
         height: 60px;
         width: 60px;
         background: #60653e;
     }
+
+    #nav {
+        margin-left: auto;
+        padding: 10px;
+    }
+
 </style>

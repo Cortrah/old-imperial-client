@@ -2,22 +2,23 @@
 	<el-dialog title="Leader Action"
 			   :visible.sync="dialogFormVisible">
 
-		<el-form :model="form">
+		<el-form :model="formData">
 
 			<el-form-item label="Action Type" :label-width="formLabelWidth">
-				<el-select v-model="form.actionType" placeholder="select an action type">
+				<el-select v-model="formData.actionType" placeholder="select an action type">
 					<el-option label="Movement" value="mv"></el-option>
 					<el-option label="Exchange" value="ex"></el-option>
-					<el-option label="Diplomacy" value="dip"></el-option>
-					<el-option label="Inteligence" value="int"></el-option>
+					<el-option label="Diplomacy" value="dp"></el-option>
+					<el-option label="Intelligence" value="int"></el-option>
 					<el-option label="Combat" value="cb"></el-option>
 					<el-option label="Magic" value="ma"></el-option>
 					<el-option label="Conditional" value="cond"></el-option>
+					<el-option label="Note" value="note"></el-option>
 				</el-select>
 			</el-form-item>
 
 			<el-form-item label="Note" :label-width="formLabelWidth">
-				<el-input v-model="form.note" autocomplete="off"></el-input>
+				<el-input v-model="formData.note" autocomplete="off"></el-input>
 			</el-form-item>
 		</el-form>
 
@@ -35,7 +36,7 @@
         data() {
             return {
                 dialogFormVisible: true,
-                form: {
+				formData: {
 					actionType: 'mv',
                     note: '',
                 },

@@ -38,8 +38,8 @@
             openModal() {
                 let dataForModal = {
                     modalName: "ActionModal",
-                    data: {
-                        initialName: "Joe Joe"
+                    formData: {
+                        actionType: "cb"
                     },
                 };
                 this.$bus.$emit('open-modal', dataForModal);

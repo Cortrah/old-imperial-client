@@ -6,13 +6,38 @@
 
         <vue-context ref="menu">
             <li>
-                <a href="#" @click.prevent="onClick($event.target.innerText)">
+                <a href="#" @click.prevent="openLeaderActionModal('ex')">
+                    Exchange
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('dp')">
                     Diplomacy
                 </a>
             </li>
             <li>
-                <a href="#" @click.prevent="onClick($event.target.innerText)">
-                    Exchange
+                <a href="#" @click.prevent="openLeaderActionModal('int')">
+                    Intelligence
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('cb')">
+                    Combat
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('ma')">
+                    Magic
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('cond')">
+                    Conditional
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('note')">
+                    Note
                 </a>
             </li>
         </vue-context>
@@ -148,9 +173,16 @@
             //     console.log(e);
             //     console.log("x:" + e.offsetX + " , y:" + e.offsetY)
             // },
-            onClick (msg) {
-                alert(`You clicked "${msg}"!`);
-            }
+            openLeaderActionModal(msg) {
+                console.log(msg);
+                let dataForModal = {
+                    modalName: "ActionModal",
+                    formData: {
+                        actionType: msg
+                    },
+                };
+                this.$bus.$emit('open-modal', dataForModal);
+            },
         }
     }
 

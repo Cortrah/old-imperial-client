@@ -3,38 +3,34 @@
     <div class="container">
 
         <div class="left">
-            <h2>
-                Narrative
-            </h2>
+            <main-narrative></main-narrative>
         </div>
 
-        <main>
+        <div class="main">
             <joint-region-map></joint-region-map>
-        </main>
+        </div>
+
+        <div>
+            <el-button type="text" @click="openModal()">open</el-button>
+            <el-button type="text" @click="notifyGuy('hoho hi')">note</el-button>
+        </div>
 
         <div class="right">
             <leader-actions></leader-actions>
         </div>
-
-        <footer>
-            <h3>
-                Popup Windows
-                <el-button type="text" @click="openModal()">open</el-button>
-                <el-button type="text" @click="notifyGuy('hoho hi')">note</el-button>
-            </h3>
-        </footer>
     </div>
-
 
 </template>
 
 <script>
-    import JointRegionMap from '../components/JointRegionMap'
+    import JointRegionMap from '../components/JointRegionMap';
     import LeaderActions from '../components/LeaderActions';
+    import MainNarrative from '../components/MainNarrative';
 
     export default {
-        name: "Game",
+        name: "Play",
         components: {
+            MainNarrative,
             JointRegionMap,
             LeaderActions
         },
@@ -76,14 +72,14 @@
     .left {
         display: flex;
         grid-area: left;
-        align-items: center;
+        align-items: start;
         justify-content: center;
         margin-left: 0.5rem;
         background-color: #f4f4f4;
         flex: 0 0 auto;
     }
 
-    main {
+    .main {
         position: absolute;
         top: 90px;
         left: 260px;
@@ -96,14 +92,15 @@
     .right {
         display: flex;
         grid-area: right;
-        align-items: center;
+        align-items: start;
         justify-content: center;
         margin-right: 0.5rem;
         background-color: #e4e4e4;
         flex: 0 0 auto;
     }
 
-    footer {
+    .footer {
+        height: 60px;
         grid-area: footer;
         background: #000000;
     }

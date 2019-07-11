@@ -28,6 +28,7 @@
 
 <style>
     .home{
+        color: black;
         text-align: center;
         top: 60px;
         position: relative;

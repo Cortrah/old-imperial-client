@@ -3,6 +3,7 @@
         <div id="graphie"
              @contextmenu.prevent="$refs.menu.open">
         </div>
+
         <vue-context ref="menu">
             <li>
                 <a href="#" @click.prevent="onClick($event.target.innerText)">
@@ -15,6 +16,7 @@
                 </a>
             </li>
         </vue-context>
+
     </div>
 </template>
 

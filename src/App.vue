@@ -4,7 +4,7 @@
             <img id="logo" src="./assets/sardarthion_house.png"  >
 
             <h1>
-                Old Imperial
+                Cruenti Dei
             </h1>
 
             <div id="box" ref="box"></div>
@@ -14,8 +14,8 @@
                     Home
                 </router-link>
                 |
-                <router-link to="/game">
-                    Game
+                <router-link to="/play">
+                    Play
                 </router-link>
                 |
                 <router-link to="/about">
@@ -136,11 +136,17 @@
         margin: 0;
     }
 
-    h1, h3, a {
+    a {
         color: whitesmoke;
     }
 
+    p {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
     header {
+        color: whitesmoke;
         display: flex;
         width: 100%;
         height: 60px;

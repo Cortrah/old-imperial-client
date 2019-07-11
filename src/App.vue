@@ -37,12 +37,12 @@
     import {TimelineMax, Back} from 'gsap'
 
     import LoadRegions from './commands/LoadRegions';
-    import GetNameModal from "./components/GetNameModal";
+    import ActionModal from "./components/ActionModal";
 
     export default {
         name: "App",
         components: {
-            GetNameModal,
+            ActionModal,
         },
         data () {
             return {

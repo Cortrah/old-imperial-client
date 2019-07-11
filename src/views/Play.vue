@@ -7,7 +7,7 @@
         </div>
 
         <div class="main">
-            <joint-region-map></joint-region-map>
+            <game-map></game-map>
         </div>
 
         <div>
@@ -23,21 +23,21 @@
 </template>
 
 <script>
-    import JointRegionMap from '../components/JointRegionMap';
     import LeaderActions from '../components/LeaderActions';
     import MainNarrative from '../components/MainNarrative';
+    import GameMap from "../components/GameMap";
 
     export default {
         name: "Play",
         components: {
+            GameMap,
             MainNarrative,
-            JointRegionMap,
             LeaderActions
         },
         methods: {
             openModal() {
                 let dataForModal = {
-                    modalName: "GetNameModal",
+                    modalName: "ActionModal",
                     data: {
                         initialName: "Joe Joe"
                     },

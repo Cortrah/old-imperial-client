@@ -38,7 +38,7 @@
             openModal() {
                 let dataForModal = {
                     modalName: "ActionModal",
-                    formData: {
+                    data: {
                         actionType: "cb"
                     },
                 };

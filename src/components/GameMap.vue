@@ -177,8 +177,9 @@
                 console.log(msg);
                 let dataForModal = {
                     modalName: "ActionModal",
-                    formData: {
-                        actionType: msg
+                    data: {
+                        actionType: msg,
+                        note: ""
                     },
                 };
                 this.$bus.$emit('open-modal', dataForModal);

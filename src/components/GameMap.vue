@@ -125,6 +125,7 @@
 
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
                      let currentLeader = cellView;
+                     scope.currentLeader = currentLeader;
                      currentLeader.model.toFront();
 
                      console.log(scope);
@@ -157,20 +158,20 @@
             // When the dragged cell is dropped over another cell, let it become a child of the element below.
             paper.on('cell:pointerup', function(cellView, evt, x, y) {
 
-                //graph.removeLinks(this.leader1);
+                cellView.model.graph.removeLinks(scope.currentLeader);
 
-                let cell = cellView.model;
-                let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
-
-                if (cellViewsBelow.length) {
-                    // Note that the findViewsFromPoint() returns the view for the `cell` itself.
-                    let cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
-
-                    // Prevent recursive embedding.
-                    if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
-                        cellViewBelow.model.embed(cell);
-                    }
-                }
+                // let cell = cellView.model;
+                // let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
+                //
+                // if (cellViewsBelow.length) {
+                //     // Note that the findViewsFromPoint() returns the view for the `cell` itself.
+                //     let cellViewBelow = _.find(cellViewsBelow, function(c) { return c.model.id !== cell.id });
+                //
+                //     // Prevent recursive embedding.
+                //     if (cellViewBelow && cellViewBelow.model.get('parent') !== cell.id) {
+                //         cellViewBelow.model.embed(cell);
+                //     }
+                // }
             });
 
             paper.on('cell:mouseover', function(cellView, evt, x, y) {

@@ -145,6 +145,36 @@
                         let link = new joint.shapes.standard.Link();
                         link.source(scope.currentLeader.model);
                         link.target(region);
+                        link.appendLabel({
+                            markup: [
+                                {
+                                    tagName: 'circle',
+                                    selector: 'body'
+                                }, {
+                                    tagName: 'text',
+                                    selector: 'label'
+                                }
+                            ],
+                            attrs: {
+                                label: {
+                                    text: '1',
+                                    fill: '#000000',
+                                    fontSize: 14,
+                                    textAnchor: 'middle',
+                                    yAlignment: 'middle',
+                                    pointerEvents: 'none'
+                                },
+                                body: {
+                                    ref: 'label',
+                                    fill: '#ffffff',
+                                    stroke: '#000000',
+                                    strokeWidth: 1,
+                                    refR: 1,
+                                    refCx: 0,
+                                    refCy: 0
+                                },
+                            }
+                        });
                         link.addTo(region.graph);
                         scope.links.push(link);
                     });

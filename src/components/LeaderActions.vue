@@ -1,5 +1,7 @@
 <template>
     <div v-drag-and-drop:options="options" class="leader-actions">
+        <img src="../assets/avatars/chitixi.jpg"/>
+        <img src="../assets/avatars/aanavas.png"/>
         <ul class="drag-list">
             <li class="drag-column" v-for="group in groups"
                 :key="group.id">

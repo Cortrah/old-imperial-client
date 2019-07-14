@@ -63,7 +63,8 @@
                 currentLeader: null,
                 jointRegions: [],
                 jointLocations: [],
-                currentLinks: []
+                currentLinks: [],
+                links: []
             }
         },
         mounted: function() {
@@ -105,39 +106,49 @@
                 })
             });
 
-            let jointRegions = this.jointRegions;
 
+            let scope = this;
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {
 
-                console.log('cell:pointerdown');
-                console.log(cellView);
+                // console.log('cell:pointerdown');
+                // let dataForAction = {
+                //     modalName: "ActionModal",
+                //     data: {
+                //         cellView: cellView,
+                //         evt: evt,
+                //         x: x,
+                //         y: y,
+                //     },
+                // };
+                // scope.$bus.$emit('show-movement-options', dataForAction);
 
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
-                    this.currentLeader = cellView;
-                    this.currentLeader.model.toFront();
+                     let currentLeader = cellView;
+                     currentLeader.model.toFront();
 
+                     console.log(scope);
                     // get the location
-                    let currentLocationCell = graph.getCell(this.currentLeader.model.get('parent'));
-                    currentLocationCell.unembed(this.currentLeader);
+                    //let currentLocationCell = graph.getCell(currentLeader.model.get('parent'));
+                    //currentLocationCell.unembed(currentLeader);
 
-                    let currentRegionCell = graph.getCell(currentLocation.model.get('parent'));
-                    let currentRegionId = currentRegionCell.attrs.regionId;
-
-                    console.log(currentRegionId);
+                    // let currentRegionCell = graph.getCell(currentLocation.model.get('parent'));
+                    // let currentRegionId = currentRegionCell.attrs.regionId;
+                    // console.log(currentRegionId);
 
                     // get the other locations of the current region
                     // and the county locations of the bordering regions
                     // and create links to each of them
                     // calculating the costs
-                    //
-                    // this.jointRegions.forEach( region => {
-                    //     let link = new joint.shapes.standard.Link();
-                    //     link.source(this.currentLeader);
-                    //     link.target(region.model);
-                    //     link.addTo(this.graph);
-                    //     this.links.push(link);
-                    // });
+                    console.log(scope.jointRegions.length);
+
+                    scope.jointRegions.forEach( region => {
+                        let link = new joint.shapes.standard.Link();
+                        link.source(currentLeader);
+                        link.target(region);
+                        link.addTo(region.graph);
+                        scope.links.push(link);
+                    });
                 } else {
                     evt.data.guarded = true;
                 }

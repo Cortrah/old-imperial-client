@@ -106,8 +106,6 @@
 
         methods: {
             eventSwitch: function(event, data) {
-                console.log(event);
-                console.log(data);
                 if (typeof event !== "undefined") {
                     switch (event) {
                         case 'open-modal': {

@@ -319,7 +319,7 @@ export default class LoadRegions extends Command{
                                         items: [],
                                         unitTypeGroups: [],
                                         pathFill: '#F5F5F5',
-                                        x: 780,
+                                        x: 640,
                                         y: 180,
                                         w: 30,
                                         h: 30,

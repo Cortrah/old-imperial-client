@@ -128,7 +128,6 @@
                      scope.currentLeader = currentLeader;
                      currentLeader.model.toFront();
 
-                     console.log(scope);
                     // get the location
                     //let currentLocationCell = graph.getCell(currentLeader.model.get('parent'));
                     //currentLocationCell.unembed(currentLeader);
@@ -141,16 +140,17 @@
                     // and the county locations of the bordering regions
                     // and create links to each of them
                     // calculating the costs
-                    console.log(scope.jointRegions.length);
 
                     scope.jointRegions.forEach( region => {
                         let link = new joint.shapes.standard.Link();
-                        link.source(currentLeader);
+                        link.source(scope.currentLeader.model);
                         link.target(region);
                         link.addTo(region.graph);
                         scope.links.push(link);
                     });
-                } else {
+                } else if (cellView.model.attributes.attrs.cellType === "Region") {
+                    console.log("is Region do not drag");
+                } else if(evt.data){
                     evt.data.guarded = true;
                 }
             });
@@ -158,7 +158,7 @@
             // When the dragged cell is dropped over another cell, let it become a child of the element below.
             paper.on('cell:pointerup', function(cellView, evt, x, y) {
 
-                cellView.model.graph.removeLinks(scope.currentLeader);
+                cellView.model.graph.removeLinks(scope.currentLeader.model);
 
                 // let cell = cellView.model;
                 // let cellViewsBelow = paper.findViewsFromPoint(cell.getBBox().center());
@@ -176,7 +176,7 @@
 
             paper.on('cell:mouseover', function(cellView, evt, x, y) {
                 if (cellView.model.attributes.attrs.cellType === "Region") {
-                    console.log(cellView.model.attributes.attrs.tooltip);
+                    //console.log(cellView.model.attributes.attrs.tooltip);
                 }
             });
         },
@@ -186,7 +186,6 @@
             //     console.log("x:" + e.offsetX + " , y:" + e.offsetY)
             // },
             openLeaderActionModal(msg) {
-                console.log(msg);
                 let dataForModal = {
                     modalName: "ActionModal",
                     data: {

@@ -60,10 +60,9 @@
     .container {
         display: grid;
         grid-template-areas:
-                "left content right"
-                "footer footer footer";
+                "left main right";
         height: 100vh;
-        grid-template-columns: 260px 1fr 220px;
+        grid-template-columns: 540px 1fr 260px;
         grid-template-rows: 1fr auto;
         grid-gap: 10px;
         overflow: hidden;
@@ -82,8 +81,8 @@
     .main {
         position: absolute;
         top: 90px;
-        left: 260px;
-        right: 220px;
+        left: 540px;
+        right: 260px;
         height: 80%;
         overflow: scroll;
         box-sizing: border-box;
@@ -99,21 +98,13 @@
         flex: 0 0 auto;
     }
 
-    .footer {
-        height: 60px;
-        grid-area: footer;
-        background: #000000;
-    }
-
     @media (max-width: 768px) {
         .container {
             grid-template-areas:
-                    "header"
                     "left"
                     "main"
-                    "right"
-                    "footer";
-            grid-template-columns: 1fr;
+                    "right";
+            grid-template-columns: 240px 1fr 200px;
             grid-template-rows: auto minmax(75px, auto) 1fr minmax(75px, auto) auto;
         }
         left, right {

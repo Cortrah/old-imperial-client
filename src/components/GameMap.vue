@@ -111,17 +111,6 @@
             // First, unembed the cell that has just been grabbed by the user.
             paper.on('cell:pointerdown', function(cellView, evt, x, y) {
 
-                // console.log('cell:pointerdown');
-                // let dataForAction = {
-                //     modalName: "ActionModal",
-                //     data: {
-                //         cellView: cellView,
-                //         evt: evt,
-                //         x: x,
-                //         y: y,
-                //     },
-                // };
-                // scope.$bus.$emit('show-movement-options', dataForAction);
 
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
                      let currentLeader = cellView;

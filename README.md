@@ -37,3 +37,37 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+Todo:
+Fonts
+Fragments
+
+Toggling Pane View Modes
+
+Left Pane:
+    Turn Slider
+    Turn Narratives
+    Realm Narratives
+    Agent Narratives
+    
+GameMap
+    Zoomable
+    Show and Hide Modes
+    Leader Movement by Drag
+    Leader Actions by Right Click Orbit
+    Select Region or Home Region
+    
+Right Pane
+    Leader Actions
+    Region Actions
+    Realm Actions
+        
+Process Leader Actions
+Process Realm Actions
+Process Region Actions
+
+Display Troops
+Display Items
+
+Exchanging Troops and Items        

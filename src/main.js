@@ -5,8 +5,8 @@ import store from './store'
 import './registerServiceWorker'
 import VueDraggable from 'vue-draggable'
 import { VueContext } from 'vue-context'
+import "./theme/index.css"
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 
 // import * as _ from "lodash";
 // import joint from '../../node_modules/jointjs';

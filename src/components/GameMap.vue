@@ -1,6 +1,24 @@
 <template>
     <div>
+
+        <div id="toolbar">
+            <el-button-group style="width:280px; float:left">
+                <el-button type="primary" icon="el-icon-picture" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-location" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-view" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-view" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+            </el-button-group>
+            <div class="block">
+                <el-slider v-model="zoom" v-on:change="zoomChanged"
+                           style="width:300px; float:right; padding-right:15px">
+                </el-slider>
+            </div>
+        </div>
+
         <div id="graphie"
+             :style="{ width: mapWidth + '%', height: mapHeight + '%' }"
              @contextmenu.prevent="$refs.menu.open">
         </div>
 
@@ -58,6 +76,7 @@
         },
         data () {
             return {
+                zoom: 40,
                 graph: Object,
                 paper: Object,
                 currentLeader: null,
@@ -66,6 +85,14 @@
                 currentLinks: [],
                 links: []
             }
+        },
+        computed: {
+            mapHeight: function () {
+                return this.zoom * 10;
+            },
+            mapWidth: function () {
+                return this.zoom * 10;
+            },
         },
         mounted: function() {
 
@@ -214,7 +241,35 @@
                 };
                 this.$bus.$emit('open-modal', dataForModal);
             },
+
+            zoomChanged: function (event) {
+                if(event > 10){
+                    this.zoom = event;
+                } else {
+                    this.zoom = 10;
+                }
+            },
         }
     }
 
 </script>
+
+<style>
+    #toolbar {
+        height: 30px;
+        top: 60px;
+        width: 100%;
+        color: #999999;
+        background-image: url("../assets/transparent_grey.png");
+        padding: 5px;
+        position: fixed;
+        z-index: 600;
+        -moz-box-shadow: 6px 6px 8px #666;
+        -webkit-box-shadow: 6px 6px 8px #666;
+        box-shadow: 6px 6px 8px #666;
+        /* For IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=180, Color='#666666')";
+        /* For IE 5.5 - 7 */
+        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=180, Color='#666666');
+    }
+</style>

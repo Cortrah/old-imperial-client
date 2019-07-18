@@ -40,34 +40,36 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 Todo:
-Fonts
-Fragments
+- [ ] Fonts
+- [ ] Fragments
 
-Toggling Pane View Modes
+- [ ] Toggling Pane View Modes
 
-Left Pane:
-    Turn Slider
-    Turn Narratives
-    Realm Narratives
-    Agent Narratives
+- [ ] Left Pane:
+    - [ ] Turn Slider
+    - [ ] Turn Narratives
+    - [ ] Realm Narratives
+    - [ ] Agent Narratives
+    - [ ] Diplomacy
+    - [ ] Rules
     
-GameMap
-    Zoomable
-    Show and Hide Modes
-    Leader Movement by Drag
-    Leader Actions by Right Click Orbit
-    Select Region or Home Region
+- [ ] GameMap
+    - [ ] Zoomable
+    - [ ] Show and Hide Modes
+    - [ ] Leader Movement by Drag
+    - [ ] Leader Actions by Right Click Orbit
+    - [ ] Select Region or Home Region
     
-Right Pane
-    Leader Actions
-    Region Actions
-    Realm Actions
+- [ ] Right Pane
+    - [ ] Leader Actions
+    - [ ] Region Actions
+    - [ ] Realm Actions
         
-Process Leader Actions
-Process Realm Actions
-Process Region Actions
+- [ ] Process Leader Actions
+- [ ] Process Realm Actions
+- [ ] Process Region Actions
 
-Display Troops
-Display Items
+- [ ] Display Troops
+- [ ] Display Items
 
-Exchanging Troops and Items        
+- [ ] Exchanging Troops and Items        

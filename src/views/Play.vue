@@ -59,8 +59,7 @@
 
     .container {
         display: grid;
-        grid-template-areas:
-                "left main right";
+        grid-template-areas: "left main right";
         height: 100vh;
         grid-template-columns: 540px 1fr 260px;
         grid-template-rows: 1fr auto;
@@ -100,10 +99,7 @@
 
     @media (max-width: 768px) {
         .container {
-            grid-template-areas:
-                    "left"
-                    "main"
-                    "right";
+            grid-template-areas: "left" "main" "right";
             grid-template-columns: 240px 1fr 200px;
             grid-template-rows: auto minmax(75px, auto) 1fr minmax(75px, auto) auto;
         }

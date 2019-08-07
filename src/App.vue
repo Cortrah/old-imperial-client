@@ -44,6 +44,7 @@
         components: {
             ActionModal,
         },
+
         data () {
             return {
                 modals: [],

@@ -1,10 +1,9 @@
 <template>
     <div class="center">
-        <base-map></base-map>
-<!--        <img src="../assets/ts1.png">-->
-<!--        <h3>-->
-<!--            Don't escape reality, generate alternatives<br> - with <b>Turnstyles</b>.-->
-<!--        </h3>-->
+        <img src="../assets/ts1.png">
+        <h3>
+            Don't escape reality, generate alternatives<br> - with <b>Turnstyles</b>.
+        </h3>
     </div>
 </template>
 
@@ -19,12 +18,12 @@
 </script>
 
 <style scoped>
-    /*h3 {*/
-    /*    color: black;*/
-    /*    text-align: right;*/
-    /*}*/
-    /*.center {*/
-    /*    margin: auto;*/
-    /*    width: 50%;*/
-    /*}*/
+    h3 {
+        color: black;
+        text-align: right;
+    }
+    .center {
+        margin: auto;
+        width: 50%;
+    }
 </style>

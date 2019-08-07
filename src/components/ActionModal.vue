@@ -24,13 +24,15 @@
 
 		<span slot="footer" class="dialog-footer">
 			<el-button @click="dialogFormVisible = false">Cancel</el-button>
-			<el-button type="primary" @click="dialogFormVisible = false">Confirm</el-button>
+			<el-button type="primary" @click="addLeaderAction()">Confirm</el-button>
 	  	</span>
 
 	</el-dialog>
 </template>
 
 <script>
+	import AddLeaderAction from "../commands/AddLeaderAction";
+
     export default {
         name: "ActionModal",
 		props: {
@@ -45,5 +47,27 @@
                 formLabelWidth: '120px'
             };
         },
+		methods: {
+
+        	addLeaderAction() {
+				this.$store.dispatch(
+						{
+							type:'onDispatch',
+							command: new AddLeaderAction()
+						}
+				).then(
+						result => {
+							// all's well
+							// console.log('Initial loading of regions succeeded');
+						}
+				).catch(
+						error => {
+							console.log(error);
+							// console.log('Initial loading of region data failed');
+						}
+				);
+				this.dialogFormVisible = false;
+			}
+		}
 	}
 </script>

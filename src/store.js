@@ -11,7 +11,33 @@ export default new Vuex.Store({
         isServerLive: false,
         appView: null,
         regions: [],
-        leaderActions: [],
+        leaderActions:[
+            {
+                id: 1,
+                name: "Previous Phases",
+                items: [
+                    { id: 1, name: "Mv C.Sut~Tak", groupId: 1 },
+                    { id: 2, name: "Dp Tak", groupId: 1 },
+                    { id: 3, name: "Ex Tak", groupId: 1 }
+                ]
+            },
+            {
+                id: 2,
+                name: "Phase 10",
+                items: [
+                    { id: 4, name: "Mv Tak:Chak", groupId: 2 },
+                ]
+            },
+            {
+                id: 3,
+                name: "Next Phases",
+                items: [
+                    { id: 5, name: "S&E Chak", groupId: 3 },
+                    { id: 6, name: "Ex Chak", groupId: 3 },
+                    { id: 7, name: "Re Spel ", groupId: 3 }
+                ]
+            }
+        ],
         getters: {
             editingRegion: state => (regionId) =>{
                 let indexById = state.regions.findIndex( region => region.id == regionId);

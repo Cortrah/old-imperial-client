@@ -236,6 +236,7 @@
                     modalName: "ActionModal",
                     data: {
                         actionType: msg,
+                        actionSubType: "",
                         note: ""
                     },
                 };

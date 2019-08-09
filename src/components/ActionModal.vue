@@ -2,10 +2,10 @@
 	<el-dialog title="Leader Action"
 			   :visible.sync="dialogFormVisible">
 
-		<el-form :model="modalData">
+		<el-form :model="modalData" inline="true" >
 
 			<el-form-item label="Action Type" :label-width="formLabelWidth" >
-				<el-select v-model="modalData.actionType" placeholder="select an action type" value="mv">
+				<el-select v-model="modalData.actionType" placeholder="select an action type" value-key="code">
 						<el-option v-for="actionType in $store.state.static.leaderActionTypes"
 								   :key="actionType.code"
 								   :label="actionType.name"
@@ -13,6 +13,14 @@
 						</el-option>
 				</el-select>
 			</el-form-item>
+
+			<el-select v-model="modalData.actionSubType" value-key="code">
+				<el-option v-for="actionSubType in $store.state.static.leaderActionTypes"
+						   :key="actionSubType.code"
+						   :label="actionSubType.name"
+						   :value="actionSubType.code">
+				</el-option>
+			</el-select>
 
 			<el-form-item label="Conditionals" :label-width="formLabelWidth">
 				<el-switch
@@ -22,15 +30,18 @@
 				</el-switch>
 			</el-form-item>
 
+			<el-form-item label="Secret" :label-width="formLabelWidth">
+				<el-checkbox v-model="modalData.isSecret"></el-checkbox>
+			</el-form-item>
+		</el-form>
+
+		<el-form :model="modalData">
 			<el-form-item label="Note" :label-width="formLabelWidth">
 				<el-input type="textarea" v-model="modalData.note" autocomplete="off"></el-input>
 			</el-form-item>
 
-			<el-form-item label="Secret" :label-width="formLabelWidth">
-				<el-checkbox v-model="modalData.isSecret"></el-checkbox>
-			</el-form-item>
 
-			<el-form-item label="Transfering" :label-width="formLabelWidth">
+			<el-form-item v-if="getActionType() == 'tr'" label="Transfering" :label-width="formLabelWidth">
 				<el-transfer
 						v-model="transferables"
 						:data="transfering"
@@ -38,25 +49,30 @@
 				</el-transfer>
 			</el-form-item>
 
+			<el-form-item label="Costs" :label-width="formLabelWidth">
+				<el-form :inline="true" label-position="top">
+					<el-form-item label="Mp" >
+						<el-input-number v-model="modalData.mp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+					<el-form-item label="Gp" >
+						<el-input-number v-model="modalData.gp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+					<el-form-item label="Ap" >
+						<el-input-number v-model="modalData.ap" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+					<el-form-item label="Nfp">
+						<el-input-number v-model="modalData.nfp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+					<el-form-item label="Sfp">
+						<el-input-number v-model="modalData.nfp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+					<el-form-item label="Mana" >
+						<el-input-number v-model="modalData.mana" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+					</el-form-item>
+				</el-form>
+			</el-form-item>
 		</el-form>
 
-		<el-form :inline="true">
-			<el-form-item label="Mp" >
-				<el-input-number v-model="modalData.mp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
-			</el-form-item>
-			<el-form-item label="Gp" >
-				<el-input-number v-model="modalData.gp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
-			</el-form-item>
-			<el-form-item label="Ap" >
-				<el-input-number v-model="modalData.ap" controls-position="right" @change="handleChange" :min="0"></el-input-number>
-			</el-form-item>
-			<el-form-item label="Nfp">
-				<el-input-number v-model="modalData.nfp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
-			</el-form-item>
-			<el-form-item label="Mana" >
-				<el-input-number v-model="modalData.mana" controls-position="right" @change="handleChange" :min="0"></el-input-number>
-			</el-form-item>
-		</el-form>
 
 		<span slot="footer" class="dialog-footer">
 			<el-button @click="dialogFormVisible = false">Cancel</el-button>
@@ -75,7 +91,6 @@
         	modalData: {
 				type: Object,
 				required: true,
-				gp: 0,
 			}
 		},
         data() {
@@ -140,10 +155,20 @@
 					}
 				);
 				this.dialogFormVisible = false;
+			},
+
+			getActionType() {
+				return this.modalData.actionType;
+			},
+
+			handleChange(e) {
+				console.log(e);
 			}
 		}
 	}
 </script>
 <style scoped>
-
+	.el-input-number {
+		max-width: 100px;
+	}
 </style>

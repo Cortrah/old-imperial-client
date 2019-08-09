@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import joint from '../node_modules/jointjs';
 
 import Region from './domain/Region';
+import LoadRegions from './commands/LoadRegions';
+import { leaderActionTypes } from './domain/Types/StaticTypes.js';
 
 Vue.use(Vuex);
 
@@ -57,13 +59,29 @@ export default new Vuex.Store({
                 "hills": "url('images/tiles/hills.png')",
                 "mountain": "url('images/tiles/sandysoil.png')",
                 "water": "url('images/tiles/water.png')"
-            }
+            },
+            leaderActionTypes: leaderActionTypes
         },
 
     },
     actions: {
         onInit(context, payload){
-            context.commit("init", payload);
+            this.dispatch(
+                {
+                    type:'onDispatch',
+                    command: new LoadRegions()
+                }
+            ).then(
+                result => {
+                    // all's well
+                    // console.log('Initial loading of regions succeeded');
+                }
+            ).catch(
+                error => {
+                    console.log(error);
+                    // console.log('Initial loading of region data failed');
+                }
+            );
             this.state.graph = new joint.dia.Graph;
         },
         async onDispatch(context, action) {

@@ -4,21 +4,57 @@
 
 		<el-form :model="modalData">
 
-			<el-form-item label="Action Type" :label-width="formLabelWidth">
-				<el-select v-model="modalData.actionType" placeholder="select an action type">
-					<el-option label="Movement" value="mv"></el-option>
-					<el-option label="Exchange" value="ex"></el-option>
-					<el-option label="Diplomacy" value="dp"></el-option>
-					<el-option label="Intelligence" value="int"></el-option>
-					<el-option label="Combat" value="cb"></el-option>
-					<el-option label="Magic" value="ma"></el-option>
-					<el-option label="Conditional" value="cond"></el-option>
-					<el-option label="Note" value="note"></el-option>
+			<el-form-item label="Action Type" :label-width="formLabelWidth" >
+				<el-select v-model="modalData.actionType" placeholder="select an action type" value="mv">
+						<el-option v-for="actionType in $store.state.static.leaderActionTypes"
+								   :key="actionType.code"
+								   :label="actionType.name"
+								   :value="actionType.code">
+						</el-option>
 				</el-select>
 			</el-form-item>
 
+			<el-form-item label="Conditionals" :label-width="formLabelWidth">
+				<el-switch
+						v-model="hasConditionals"
+						active-color="#13ce66"
+						inactive-color="#ff4949">
+				</el-switch>
+			</el-form-item>
+
 			<el-form-item label="Note" :label-width="formLabelWidth">
-				<el-input v-model="modalData.note" autocomplete="off"></el-input>
+				<el-input type="textarea" v-model="modalData.note" autocomplete="off"></el-input>
+			</el-form-item>
+
+			<el-form-item label="Secret" :label-width="formLabelWidth">
+				<el-checkbox v-model="modalData.isSecret"></el-checkbox>
+			</el-form-item>
+
+			<el-form-item label="Transfering" :label-width="formLabelWidth">
+				<el-transfer
+						v-model="transferables"
+						:data="transfering"
+						:titles="['Source', 'Target']">
+				</el-transfer>
+			</el-form-item>
+
+		</el-form>
+
+		<el-form :inline="true">
+			<el-form-item label="Mp" >
+				<el-input-number v-model="modalData.mp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+			</el-form-item>
+			<el-form-item label="Gp" >
+				<el-input-number v-model="modalData.gp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+			</el-form-item>
+			<el-form-item label="Ap" >
+				<el-input-number v-model="modalData.ap" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+			</el-form-item>
+			<el-form-item label="Nfp">
+				<el-input-number v-model="modalData.nfp" controls-position="right" @change="handleChange" :min="0"></el-input-number>
+			</el-form-item>
+			<el-form-item label="Mana" >
+				<el-input-number v-model="modalData.mana" controls-position="right" @change="handleChange" :min="0"></el-input-number>
 			</el-form-item>
 		</el-form>
 
@@ -39,35 +75,75 @@
         	modalData: {
 				type: Object,
 				required: true,
+				gp: 0,
 			}
 		},
         data() {
             return {
                 dialogFormVisible: true,
-                formLabelWidth: '120px'
+                formLabelWidth: '120px',
+				showDetails: false,
+				hasConditionals: false,
+				transferables: [
+					{
+						key: 1,
+						label: "One",
+						disabled: false
+					},
+					{
+						key: 2,
+						label: "Two",
+						disabled: false
+					},
+					{
+						key: 3,
+						label: "Three",
+						disabled: false
+					},
+				],
+				transfering: [
+					{
+						key: 4,
+						label: "A",
+						disabled: false
+					},
+					{
+						key: 5,
+						label: "B",
+						disabled: false
+					},
+					{
+						key: 6,
+						label: "C",
+						disabled: false
+					},
+				],
             };
         },
 		methods: {
 
         	addLeaderAction() {
 				this.$store.dispatch(
-						{
-							type:'onDispatch',
-							command: new AddLeaderAction()
-						}
+					{
+						type:'onDispatch',
+						command: new AddLeaderAction()
+					}
 				).then(
-						result => {
-							// all's well
-							// console.log('Initial loading of regions succeeded');
-						}
+					result => {
+						// all's well
+						// console.log('Initial loading of regions succeeded');
+					}
 				).catch(
-						error => {
-							console.log(error);
-							// console.log('Initial loading of region data failed');
-						}
+					error => {
+						console.log(error);
+						// console.log('Initial loading of region data failed');
+					}
 				);
 				this.dialogFormVisible = false;
 			}
 		}
 	}
 </script>
+<style scoped>
+
+</style>

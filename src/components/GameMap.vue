@@ -24,12 +24,17 @@
 
         <vue-context ref="menu">
             <li>
-                <a href="#" @click.prevent="openLeaderActionModal('ex')">
-                    Exchange
+                <a href="#" @click.prevent="openLeaderActionModal('mv')">
+                    Movement
                 </a>
             </li>
             <li>
-                <a href="#" @click.prevent="openLeaderActionModal('dp')">
+                <a href="#" @click.prevent="openLeaderActionModal('tr')">
+                    Transfer
+                </a>
+            </li>
+            <li>
+                <a href="#" @click.prevent="openLeaderActionModal('di')">
                     Diplomacy
                 </a>
             </li>
@@ -39,7 +44,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" @click.prevent="openLeaderActionModal('cb')">
+                <a href="#" @click.prevent="openLeaderActionModal('cbt')">
                     Combat
                 </a>
             </li>
@@ -49,13 +54,8 @@
                 </a>
             </li>
             <li>
-                <a href="#" @click.prevent="openLeaderActionModal('cond')">
-                    Conditional
-                </a>
-            </li>
-            <li>
-                <a href="#" @click.prevent="openLeaderActionModal('note')">
-                    Note
+                <a href="#" @click.prevent="openLeaderActionModal('mi')">
+                    Misc
                 </a>
             </li>
         </vue-context>

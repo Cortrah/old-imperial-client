@@ -1,4 +1,4 @@
-import BorderType from "./BorderType";
+import BorderType from "./Types/BorderType";
 
 let defaults = {
     id : '',

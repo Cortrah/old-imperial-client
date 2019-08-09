@@ -1,0 +1,26 @@
+let defaults = {
+    id : '0',
+    name: "",
+    code: "",
+    description: "A base leader action type",
+};
+
+
+export default class LeaderActionType {
+
+    constructor(options) {
+        if (options != null) {
+            this.id = options.id || defaults.id;
+            this.name = options.name || defaults.name;
+            this.code = options.code || defaults.code;
+            this.description = options.description || defaults.description;
+        } else {
+            // use defaults
+            this.id = defaults.id;
+            this.name = defaults.name;
+            this.code = defaults.code;
+            this.description = defaults.description;
+        }
+    }
+}
+

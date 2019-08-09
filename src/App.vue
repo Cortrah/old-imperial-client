@@ -35,8 +35,6 @@
 
 <script>
     import {TimelineMax, Back} from 'gsap'
-
-    import LoadRegions from './commands/LoadRegions';
     import ActionModal from "./components/ActionModal";
 
     export default {
@@ -59,23 +57,6 @@
                     this.eventSwitch(eventName, data);
                 });
             });
-
-            this.$store.dispatch(
-                    {
-                        type:'onDispatch',
-                        command: new LoadRegions()
-                    }
-            ).then(
-                    result => {
-                        // all's well
-                        // console.log('Initial loading of regions succeeded');
-                    }
-            ).catch(
-                    error => {
-                        console.log(error);
-                        // console.log('Initial loading of region data failed');
-                    }
-            );
         },
 
         mounted() {

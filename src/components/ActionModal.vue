@@ -2,10 +2,13 @@
 	<el-dialog title="Leader Action"
 			   :visible.sync="dialogFormVisible">
 
-		<el-form :model="modalData" inline="true" >
+		<el-form :model="modalData" :inline="true" >
 
 			<el-form-item label="Action Type" :label-width="formLabelWidth" >
-				<el-select v-model="modalData.actionType" placeholder="select an action type" value-key="code">
+				<el-select v-model="modalData.actionType"
+						   placeholder="select an action type"
+						   value-key="code"
+						   @change="handleChange" >
 						<el-option v-for="actionType in $store.state.static.leaderActionTypes"
 								   :key="actionType.code"
 								   :label="actionType.name"
@@ -14,13 +17,18 @@
 				</el-select>
 			</el-form-item>
 
-			<el-select v-model="modalData.actionSubType" value-key="code">
-				<el-option v-for="actionSubType in $store.state.static.leaderActionTypes"
-						   :key="actionSubType.code"
-						   :label="actionSubType.name"
-						   :value="actionSubType.code">
-				</el-option>
-			</el-select>
+			<el-form-item :label-width="formLabelWidth">
+				<el-select v-model="modalData.actionSubType"
+						   placeholder="detail"
+						   value-key="code"
+						   @change="handleChange" >
+					<el-option v-for="actionSubType in $store.getters.getLeaderActionSubTypes(modalData.actionType)"
+							   :key="actionSubType.code"
+							   :label="actionSubType.name"
+							   :value="actionSubType.code">
+					</el-option>
+				</el-select>
+			</el-form-item>
 
 			<el-form-item label="Conditionals" :label-width="formLabelWidth">
 				<el-switch
@@ -162,6 +170,7 @@
 			},
 
 			handleChange(e) {
+				console.log(this.$store.getters.getLeaderActionSubTypes(this.modalData.actionType));
 				console.log(e);
 			}
 		}

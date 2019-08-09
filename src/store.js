@@ -40,12 +40,6 @@ export default new Vuex.Store({
                 ]
             }
         ],
-        getters: {
-            editingRegion: state => (regionId) =>{
-                let indexById = state.regions.findIndex( region => region.id == regionId);
-                return state.regions[indexById];
-            }
-        },
         static: {
             colors: {
                 "hovered": "#FFFFFF",
@@ -63,6 +57,16 @@ export default new Vuex.Store({
             leaderActionTypes: leaderActionTypes
         },
 
+    },
+    getters: {
+        editingRegion: state => (regionId) =>{
+            let indexById = state.regions.findIndex( region => region.id == regionId);
+            return state.regions[indexById];
+        },
+        getLeaderActionSubTypes: state => (leaderActionType) => {
+            let indexByCode = state.static.leaderActionTypes.findIndex( item => item.code == leaderActionType);
+            return state.static.leaderActionTypes[indexByCode].subTypes;
+        },
     },
     actions: {
         onInit(context, payload){

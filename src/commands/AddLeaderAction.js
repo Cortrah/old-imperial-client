@@ -20,7 +20,7 @@ export default class AddLeaderAction extends Command{
         // console.log(payload.action);
         // console.log(payload.results);
         // console.log(this.data);
-        return state.leaderActions[state.leaderActions.length-1].items.push({
+        return state.game.turns[0].realms[0].leaderActions[ state.game.turns[0].realms[0].leaderActions.length-1].items.push({
             id: 8,
             name: "New Act",
             groupId: 3

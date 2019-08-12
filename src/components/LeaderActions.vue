@@ -73,7 +73,7 @@
                         }
                     }
                 },
-                groups: this.$store.state.leaderActions,
+                groups: this.$store.state.game.turns[0].realms[0].leaderActions,
             };
         },
         methods: {

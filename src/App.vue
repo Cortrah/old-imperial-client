@@ -4,8 +4,10 @@
             <img id="logo" src="./assets/sardarthion_house.png"  >
 
             <h1>
-                Cruenti Dei
+                Old Imperial
+                <em style="font-size: small; font-family: OldStyleItalic"> 1561-1565 sa</em>
             </h1>
+
 
             <div id="box" ref="box"></div>
 
@@ -116,6 +118,12 @@
     html, body {
         height: 100%;
         margin: 0;
+        font-family: 'OldStyle';
+    }
+
+    h1 {
+        font-family: Max;
+        font-weight: lighter;
     }
 
     a {
@@ -123,8 +131,9 @@
     }
 
     p {
-        padding-left: 5px;
-        padding-right: 5px;
+        font-family: OldStyle;
+        padding-left: 1em;
+        padding-right: 1em;
     }
 
     header {
@@ -149,6 +158,28 @@
     #nav {
         margin-left: auto;
         padding: 10px;
+    }
+
+    @font-face {
+        font-family: Max;
+        src: url("assets/fonts/maximilian.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: OldStyle;
+        src: url("assets/fonts/oldstyle.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: OldStyleItalic;
+        font-style: italic;
+        src: url("assets/fonts/oldstyle_italic.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: OldStyleSmallCaps;
+        font-style: italic;
+        src: url("assets/fonts/oldstyle_smallcaps.ttf") format("truetype");
     }
 
 </style>

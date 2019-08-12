@@ -1,9 +1,9 @@
 <template>
     <div class="center">
         <img src="../assets/ts1.png">
-        <h3>
+        <h4>
             Don't escape reality, generate alternatives<br> - with <b>Turnstyles</b>.
-        </h3>
+        </h4>
     </div>
 </template>
 

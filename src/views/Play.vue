@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div>
 
         <div class="left">
             <main-narrative></main-narrative>

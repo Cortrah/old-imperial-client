@@ -1,8 +1,8 @@
 <template>
     <div>
-        <el-dropdown>
+        <el-dropdown @command="narrativeChange">
             <span class="el-dropdown-link">
-                <h1>
+                <h1 class="darkOnLight">
                     {{
                         $store.getters.currentTurn().narratives[0].title
                     }}
@@ -10,8 +10,9 @@
                 </h1>
             </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item  v-for="narrative in $store.state.game.turns[0].narratives"
+                <el-dropdown-item  v-for="(narrative, index) in $store.state.game.turns[0].narratives"
                                    :key="narrative.id"
+                                   :command="index"
                                    :icon="narrative.icon">
                     {{ narrative.title}}
                 </el-dropdown-item>
@@ -23,15 +24,51 @@
             <el-button type="default" icon="el-icon-caret-right" size="mini" round></el-button>
         </el-button-group>
 
-        <p>
-            {{ $store.getters.currentTurn().narratives[0].body}}
-        </p>
+        <component :narativeData="$store.getters.currentTurn().narratives[1].body"
+                   :is="$store.getters.currentLeftPaneView()">
+        </component>
     </div>
 </template>
 
 <script>
+    import MajorMapNarrative from "./LeftPane/MajorMapNarrative.vue";
+    import RealmNarrative from "./LeftPane/RealmNarrative.vue";
+    import AgentNarrative from "./LeftPane/AgentNarrative.vue";
+    import DiplomaticChannels from "./LeftPane/DiplomaticChannels.vue";
+    import GuideBook from "./LeftPane/GuideBook.vue";
+    import ImperialGazetteer from "./LeftPane/ImperialGazetteer.vue";
+    import ImperialStrengthIndex from "./LeftPane/ImperialStrengthIndex.vue";
+
+    import LeftPaneViewChanged from "../commands/LeftPaneViewChanged";
+
     export default {
-        name: "MainNarrative"
+        name: "MainNarrative",
+        components: {
+            MajorMapNarrative, RealmNarrative, GuideBook, AgentNarrative, DiplomaticChannels, ImperialGazetteer, ImperialStrengthIndex
+        },
+
+        data () {
+            return {
+                currentNarrative: "REalmNarrative",
+            }
+        },
+        methods: {
+            narrativeChange(command){
+                this.$store.dispatch({
+                        type: "onDispatch",
+                        command: new LeftPaneViewChanged({newIndex: command})
+                    }
+                ).then(
+                    result => {
+                        return result;
+                    }
+                ).catch(
+                    error => {
+                        throw error;
+                    }
+                );
+            }
+        }
     }
 </script>
 

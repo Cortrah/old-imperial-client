@@ -12,6 +12,7 @@ export default new Vuex.Store({
     state: {
         isServerLive: false,
         appView: null,
+        currentNarativeIndex: 0,
         game: {
             id:0,
             currentTurn: 0,
@@ -115,44 +116,44 @@ export default new Vuex.Store({
                     narratives: [{
                             id:0,
                             title: "Sahul Chronicle",
-                            type: "Turn Narrative",
+                            type: "MajorMapNarrative",
                             icon: "el-icon-reading",
                             heading: "Signs and Portents",
                             body: "The Midsummer meteor shower contin-ued  each  year,  and  numerous  'shooting  stars'  lit  up  the  skies  at  other  times  as  well. None, however, crashed to earth.On a warm summer evening in 1565, those ob-serving the waxing crescent moon saw a terrifying sight. The upper horn of the moon split in two, and from the midpoint of the division a flaming torch sprang up. It spewed out fire, hot coals, and sparks over a considerable distance. Meanwhile the rest of the  Moon  writhed  and  throbbed  like  a  wounded  snake. Afterwards it resumed its proper state. As  if  this  weren’t  apocalyptic  enough,  three  days later a rain of shooting stars fell through the sky  in  the  vicinity  of  the  Moon.  At  first,  it  was  similar to the delicate beauty of the Midsummer Meteor shower. Within hours, however, they be-gan  increasing,  soon  falling  at  a  prodigious  rate.  Before the night was over, it was as if a blizzard of tiny flaming lights were falling from the Moon.They only ceased when the sun rose, its power-ful light washing away the transitory brightness of the falling stars. The next day, the strange ce-lestial events were the topic of conversation in ev-ery city, town, village, and farmstead throughout Oratoa and Sahûl. Opinions  ranged  from  the  event  being  noth-ing more than a particularly impressive (but ordi-nary) meteor shower, to being an evil omen. Some thought  that  it  was  the  beginning  of  the  end  of  the world.Even before the Moon rose the next evening, a flurry of meteors could be seen on the horizon. As the Moon rose, the number of shooting stars dra-matically increased, until again it was as through the stars fell like rain. Mass panic ensued. The  density  of  the  falling  stars  soon  thinned;  within  just  a  few  days  it  was  more  of  a  sprinkle  than  a  monsoon,  but  it  was  a  month  before  it  ceased entirely."
                         },{
                             id:1,
                             title: "Realm Reports",
-                            type: "Realm Narrative",
+                            type: "RealmNarrative",
                             icon: "el-icon-notebook-2",
                             body: ""
                         },{
                             id:2,
                             title: "Agent Journals",
-                            type: "Agent Journal",
+                            type: "AgentNarrative",
                             icon: "el-icon-notebook-1",
                             body: ""
                         },{
                             id:3,
                             title: "The Agora",
-                            type: "Diplomatic Forums",
+                            type: "DiplomaticChannels",
                             icon: "el-icon-chat-line-square",
                             body: ""
                         },{
                             id:4,
-                            title: "Imperial Gazeteer",
-                            type: "Realms Summary",
+                            title: "Imperial Gazetteer",
+                            type: "ImperialGazetteer",
                             icon: "el-icon-data-analysis",
                             body: ""
                         },{
                             id:5,
                             title: "Imperial Strength Index",
-                            type: "Realms Summary",
+                            type: "ImperialStrengthIndex",
                             icon: "el-icon-data-line",
                             body: ""
                         },{
                             id:6,
                             title: "Guide",
-                            type: "Realms Summary",
+                            type: "GuideBook",
                             icon: "el-icon-guide",
                             body: ""
                         }
@@ -180,6 +181,9 @@ export default new Vuex.Store({
 
     },
     getters: {
+        currentLeftPaneView: state => () => {
+            return state.game.turns[0].narratives[state.currentNarativeIndex].type;
+        },
         currentTurn: state => () => {
             return state.game.turns[0];
         },

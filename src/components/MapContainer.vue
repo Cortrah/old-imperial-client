@@ -1,5 +1,17 @@
 <template>
-    <div>
+    <div class="wrapper">
+        <div id="toolbar">
+            <el-button-group>
+                <el-button type="primary" icon="el-icon-picture" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-location" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-view" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+            </el-button-group>
+            <el-slider id="zoomSlider"
+                       v-model="zoom" v-on:change="zoomChanged">
+            </el-slider>
+        </div>
+
         <div id="graphie"
              :style="{ width: mapWidth + '%', height: mapHeight + '%' }"
              @contextmenu.prevent="$refs.menu.open">
@@ -43,21 +55,21 @@
             </li>
         </vue-context>
 
+<!--    <GameMap id="map" :style="{ width: mapWidth + '%', height: mapHeight + '%' }"></GameMap>-->
+<!--        <img id="map" src="../assets/bigsvg.svg" :style="{ width: mapWidth + '%', height: mapHeight + '%' }"></img>-->
+
     </div>
 </template>
 
 <script>
-    import * as _ from "lodash";
     import joint from '../../node_modules/jointjs';
     import { VueContext } from 'vue-context';
+    //import GameMap from "./GameMap";
 
     export default {
-        name: 'GameMap',
+        name: 'MapContainer',
         components: {VueContext},
-        props: {
-            msg: String,
-        },
-        data () {
+        data() {
             return {
                 zoom: 40,
                 graph: Object,
@@ -123,9 +135,9 @@
 
 
                 if (cellView.model.attributes.attrs.cellType === "Leader") {
-                     let currentLeader = cellView;
-                     scope.currentLeader = currentLeader;
-                     currentLeader.model.toFront();
+                    let currentLeader = cellView;
+                    scope.currentLeader = currentLeader;
+                    currentLeader.model.toFront();
 
                     // get the location
                     //let currentLocationCell = graph.getCell(currentLeader.model.get('parent'));
@@ -235,25 +247,32 @@
             },
         }
     }
-
 </script>
 
-<style>
+<style scoped>
+
+    .wrapper {
+        width: 480px;
+    }
+
+    #map {
+        text-align: left;
+        z-index: 500;
+        background-color: #333333;
+    }
+
     #toolbar {
-        height: 30px;
-        top: 60px;
-        width: 100%;
-        color: #999999;
-        background-image: url("../assets/transparent_grey.png");
-        padding: 5px;
-        position: fixed;
-        z-index: 600;
-        -moz-box-shadow: 6px 6px 8px #666;
-        -webkit-box-shadow: 6px 6px 8px #666;
-        box-shadow: 6px 6px 8px #666;
-        /* For IE 8 */
-        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=180, Color='#666666')";
-        /* For IE 5.5 - 7 */
-        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=180, Color='#666666');
+        margin: 1em;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 480px;
+        background-color: #444;
+    }
+
+    #zoomSlider {
+        align-self: flex-end;
+        width: 240px;
+        margin-left: 40px;
     }
 </style>

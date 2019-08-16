@@ -1,4 +1,5 @@
 import LeaderActionType from "./LeaderActionType";
+import Spell from "./Spell";
 
 export const leaderActionTypes = [
     new LeaderActionType({
@@ -233,18 +234,28 @@ export const leaderActionTypes = [
         subTypes: [
             {
                 name: "Research Spell",
-                code: "research",
-                description: "",
+                code: "rs",
+                description: "Research a conceptualized or historically known spell.",
             },
             {
                 name: "Cast Spell",
                 code: "cast",
-                description: "",
+                description: "Cast a spell, can be with other leaders in which case one needs to be the primary caster.",
             },
             {
-                name: "Create Spell Crystal",
+                name: "Manufacture Spell Crystal",
                 code: "mn",
-                description: "",
+                description: "Create a spell crystal, can be blank or a minor spell. Can be a major spell if another copy is present.",
+            },
+            {
+                name: "Learn Spell",
+                code: "ls",
+                description: "Learn a spell from another leader who knows it. Becomes available for all leaders in your realm on the following turn.",
+            },
+            {
+                name: "Devise Spell",
+                code: "ds",
+                description: "Conceptualize a spell to be researched. Often takes many iterations and the results may still not be perfect.",
             },
         ]
     }),
@@ -264,6 +275,24 @@ export const leaderActionTypes = [
                 description: "",
             },
         ]
+    }),
+];
+
+export const spells = [
+    new Spell({
+        id: 0,
+        name: "Battle Magic",
+        code: "bm",
+        description: "This spell enhances an army's effectiveness in combat situations.",
+        level: 'Minor',
+        nsr: 1,
+        whenToCast: "Start of Turn",
+        timeToCast: 0,
+        allowsMultipleCasters: false,
+        initialManaCost: 1,
+        perUnitManaCost: 1,
+        totalManaCost: 1,
+        isSecret: false,
     }),
 ];
 

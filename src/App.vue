@@ -26,7 +26,7 @@
                 </div>
             </header>
 
-            <div class="left">
+            <div v-if="$store.state.currentLayout==='Stage'" class="left">
                 <MainNarrative></MainNarrative>
             </div>
 
@@ -34,11 +34,11 @@
                 <MapContainer/>
             </div>
 
-            <div class="right">
+            <div v-if="$store.state.currentLayout==='Stage'" class="right">
                 <LeaderActions/>
             </div>
 
-            <footer>
+            <footer v-if="$store.state.currentLayout==='Stage'">
                 <div>
                      Footer
                 </div>
@@ -299,17 +299,6 @@
         src: url("assets/fonts/oldstyle_smallcaps.ttf") format("truetype");
     }
 
-    @media (max-width: 768px) {
-        .container {
-            grid-template-areas: "header" "left" "main" "right" "footer";
-            grid-template-columns: 1fr;
-            grid-template-rows: auto minmax(75px, auto) 1fr minmax(75px, auto) auto;
-        }
-
-        left, right {
-            margin: 0;
-        }
-    }
 </style>
 
 <!--<script>-->

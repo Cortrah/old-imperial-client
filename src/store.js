@@ -8,10 +8,13 @@ import { leaderActionTypes } from './domain/Types/StaticTypes.js';
 
 Vue.use(Vuex);
 
+// currentLayout can be "Lobby" or "Stage"
+
 export default new Vuex.Store({
     state: {
         isServerLive: false,
         appView: null,
+        currentLayout: "Stage",
         currentNarativeIndex: 0,
         game: {
             id:0,
